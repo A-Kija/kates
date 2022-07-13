@@ -4,7 +4,7 @@ function Briedis() {
     
     <>
         <h2>Hello, Briedis!</h2>
-        <h3>Bey, bye</h3>
+        <h3 style={{color: 'green'}}>Bey, bye</h3>
     </>
 
     );
