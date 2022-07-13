@@ -2,6 +2,7 @@ import './App.css';
 // import Bebras from './Components/003/Bebras';
 import BlueCircle from './Components/003/BlueCircle';
 import RedCircle from './Components/003/RedCircle';
+import randColor from './Functions/randColor';
 // import Briedis from './Components/003/Briedis';
 
 const cats = ['Pilkis', 'Mulkis', 'Kriukis'];
@@ -25,6 +26,11 @@ function App() {
        <div className="container">
               {
         [...Array(6)].map((_, i) => i % 2 ? <BlueCircle key={i}></BlueCircle> : <RedCircle key={i}></RedCircle>)
+       }
+       </div>
+       <div className="container">
+       {
+        [...Array(10)].map((_, i) => <div className="circle" key={i} style={{backgroundColor: randColor()}}></div>)
        }
        </div>
 
