@@ -53,3 +53,11 @@ h1.red {
     background-color: crimson;
     margin: 10px;
 }
+
+.blue-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: aqua;
+    margin: 10px;
+}
