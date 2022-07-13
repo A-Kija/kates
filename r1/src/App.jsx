@@ -1,6 +1,7 @@
 import './App.css';
-import Bebras from './Components/003/Bebras';
-import Briedis from './Components/003/Briedis';
+// import Bebras from './Components/003/Bebras';
+import BlueCircle from './Components/003/BlueCircle';
+// import Briedis from './Components/003/Briedis';
 
 const cats = ['Pilkis', 'Mulkis', 'Kriukis'];
 
@@ -10,11 +11,17 @@ function App() {
     <div className="App">
       <header className="App-header">
        <h1 className="red">Start</h1>
-       <Bebras></Bebras>
-       <Briedis></Briedis>
+       {/* <Bebras></Bebras>
+       <Briedis></Briedis> */}
        {
         cats.map((c, i) => <span key={i}>{c}</span>)
        }
+        <div className="container">
+       {
+        [...Array(5)].map((_, i) => <BlueCircle key={i}></BlueCircle>)
+       }
+       </div>
+
       </header>
     </div>
   );

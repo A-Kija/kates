@@ -61,3 +61,10 @@ h1.red {
     background-color: aqua;
     margin: 10px;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
