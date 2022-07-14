@@ -82,3 +82,7 @@ h1.red {
     background-color: coral;
     margin: 10px;
 }
+
+.sq100 {
+    border: 2px solid gold;
+}

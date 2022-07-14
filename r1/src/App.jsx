@@ -1,5 +1,6 @@
 import './App.css';
 import SC1 from './Components/004/SC1';
+import SQ100 from './Components/004/SQ100';
 import Text from './Components/004/Text';
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
                 <SC1 form="circle"></SC1>
                 <SC1 form="circle"></SC1>
                 <SC1 form="square"></SC1>
+                <SQ100 h={55} w={700}></SQ100>
+                <SQ100 h={800} w={20}></SQ100>
             </header>
         </div>
     );
