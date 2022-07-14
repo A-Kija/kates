@@ -1,5 +1,6 @@
 import './App.css';
 import A from './Components/004/A';
+import C from './Components/004/C';
 import Circle from './Components/004/Circle';
 import SC1 from './Components/004/SC1';
 import SQ100 from './Components/004/SQ100';
@@ -31,6 +32,10 @@ function App() {
 
                     <A color1="pink" color2="yellow"></A>
 
+                </div>
+
+                <div className="container">
+                        <C count={4000}></C>
                 </div>
             </header>
         </div>
