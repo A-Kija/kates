@@ -1,6 +1,5 @@
 function SQ100({w, h}) {
 
-
     return (
         <div className="sq100" style= {
             {
