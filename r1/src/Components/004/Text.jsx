@@ -1,7 +1,7 @@
-function Text({zodis, zenklas}) {
+function Text({zodis, zenklas, spalva}) {
 
     return (
-        <i>{zodis}{zenklas}</i>
+        <i style={{color: spalva}}>{zodis}{zenklas}</i>
     )
 
 }
