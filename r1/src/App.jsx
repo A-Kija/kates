@@ -1,4 +1,5 @@
 import './App.css';
+import A from './Components/004/A';
 import Circle from './Components/004/Circle';
 import SC1 from './Components/004/SC1';
 import SQ100 from './Components/004/SQ100';
@@ -25,6 +26,11 @@ function App() {
                     {
                         [...Array(10)].map((_, i) => <Circle key={i} number={i + 1}></Circle>)
                     }
+                </div>
+                <div className="container">
+
+                    <A color1="pink" color2="yellow"></A>
+
                 </div>
             </header>
         </div>
