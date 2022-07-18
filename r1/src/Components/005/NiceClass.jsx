@@ -8,7 +8,8 @@ class NiceClass extends Component {
     }
 
     addCount = () => {
-        this.setState({count: this.state.count + 1})
+        this.setState(s => ({count: s.count + 1}));
+        this.setState(s => ({count: s.count + 1}));
     }
 
     greenButtonClicked = () => {
