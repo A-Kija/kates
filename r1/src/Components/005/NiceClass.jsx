@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Kv from './Kv';
 
 class NiceClass extends Component {
 
@@ -33,7 +34,7 @@ class NiceClass extends Component {
             <h2>{this.state.count}</h2>
             <div className="container">
             {
-                this.state.kv.map((_, i) => <div className="sc" key={i}></div>)
+                this.state.kv.map((_, i) => <Kv key={i}></Kv>)
             }
             </div>
             <h3 style={{
