@@ -25,6 +25,7 @@ button {
     transition: all 250ms;
     overflow: hidden;
     cursor: pointer;
+    margin: 5px;
 
     &:before {
         content: "";
