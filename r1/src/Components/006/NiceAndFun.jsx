@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import rand from '../../Functions/rand';
 import randColor from '../../Functions/randColor';
+import Sq4 from './Sq4';
 
 function NiceAndFun({ spalva }) {
 
@@ -11,6 +12,7 @@ function NiceAndFun({ spalva }) {
     const [sq1, setSq1] = useState([]);
     const [sq2, setSq2] = useState([]);
     const [sq3, setSq3] = useState([]);
+    const [sq4, setSq4] = useState([]);
 
     const doSize = () => {
         setSize(s => s === 56 ? 36 : 56);
@@ -34,6 +36,10 @@ function NiceAndFun({ spalva }) {
 
     const doSq3 = () => {
         setSq3(s => [...s, {color: randColor(), number: rand(10, 99)}]);
+    }
+
+    const doSq4 = () => {
+        setSq4(s => [...s, '']);
     }
 
     return (
@@ -61,6 +67,11 @@ function NiceAndFun({ spalva }) {
                 }
             </div>
             <div className="container">
+                {
+                    sq4.map((_, i) => <Sq4 key={i}></Sq4>)
+                }
+            </div>
+            <div className="container">
             <button onClick={doSize}>SIZE</button>
             <button onClick={doBack}>BG</button>
             <button onClick={doMore}>MORE</button>
@@ -69,6 +80,7 @@ function NiceAndFun({ spalva }) {
             <button className="red" onClick={() => setSq1([])}>reset SQ1</button>
             <button className="red" onClick={() => setSq2(s => s.filter((_, i) => i))} >- SQ2</button>
             <button className="blue" onClick={doSq3}>+SQ3</button>
+            <button className="blue" onClick={doSq4}>+SQ4</button>
             </div>
         </>
     )
