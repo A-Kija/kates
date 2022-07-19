@@ -10,6 +10,7 @@ function NiceAndFun({ spalva }) {
     const [count, setCount] = useState(0);
     const [sq1, setSq1] = useState([]);
     const [sq2, setSq2] = useState([]);
+    const [sq3, setSq3] = useState([]);
 
     const doSize = () => {
         setSize(s => s === 56 ? 36 : 56);
@@ -29,6 +30,10 @@ function NiceAndFun({ spalva }) {
 
     const doSq2 = () => {
         setSq2(s => [...s, randColor()]);
+    }
+
+    const doSq3 = () => {
+        setSq3(s => [...s, {color: randColor(), number: rand(10, 99)}]);
     }
 
     return (
@@ -51,12 +56,19 @@ function NiceAndFun({ spalva }) {
                 }
             </div>
             <div className="container">
+                {
+                    sq3.map((c, i) => <div className="sc" key={i} style={{backgroundColor: c.color}}>{c.number}</div>)
+                }
+            </div>
+            <div className="container">
             <button onClick={doSize}>SIZE</button>
             <button onClick={doBack}>BG</button>
             <button onClick={doMore}>MORE</button>
             <button className="blue" onClick={doSq1}>+SQ1</button>
             <button className="blue" onClick={doSq2}>+SQ2</button>
             <button className="red" onClick={() => setSq1([])}>reset SQ1</button>
+            <button className="red" onClick={() => setSq2(s => s.filter((_, i) => i))} >- SQ2</button>
+            <button className="blue" onClick={doSq3}>+SQ3</button>
             </div>
         </>
     )
