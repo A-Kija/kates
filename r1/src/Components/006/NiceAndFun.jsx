@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react';
+import rand from '../../Functions/rand';
 
 function NiceAndFun({ spalva }) {
 
     const [size, setSize] = useState(36); //Hook
     const [bg, setBg] = useState('white'); //Hook
+
+    const [count, setCount] = useState(0);
 
     const doSize = () => {
         setSize(s => s === 56 ? 36 : 56);
@@ -11,6 +14,10 @@ function NiceAndFun({ spalva }) {
 
     const doBack = () => {
         setBg(s => s === 'black' ? 'white' : 'black');
+    }
+
+    const doMore = () => {
+        setCount(s => s + rand(5, 10));
     }
 
     return (
@@ -21,10 +28,11 @@ function NiceAndFun({ spalva }) {
                     fontSize: size + 'px',
                     backgroundColor: bg
                 }
-            }>Braškė</h2>
+            }>Braškė {count}</h2>
             <div className="container">
             <button onClick={doSize}>SIZE</button>
             <button onClick={doBack}>BG</button>
+            <button onClick={doMore}>MORE</button>
             </div>
         </>
     )
