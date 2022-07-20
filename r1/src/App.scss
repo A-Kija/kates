@@ -85,6 +85,10 @@ button {
             color: lawngreen;
         }
     }
+
+    &.circle {
+        border-radius: 50%;
+    }
 }
 
 
@@ -184,7 +188,10 @@ h1.red {
     background-color: #61dafb69;
     transition: all .5s;
     border: 5px dotted #61dafb;
-    animation: App-logo-spin infinite 7s linear;
+    animation: App-logo-spin infinite 57s linear;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     &.circle {
         border-radius: 50%;
     }

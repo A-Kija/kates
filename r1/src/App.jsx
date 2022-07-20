@@ -2,13 +2,14 @@ import { useState } from 'react';
 import './App.scss';
 import B1 from './Components/JamesBond/B1';
 import B2 from './Components/JamesBond/B2';
+import B3 from './Components/JamesBond/B3';
 import Visual from './Components/JamesBond/Visual';
 // import Blue from './Components/JamesBond/Blue';
 // import Brown from './Components/JamesBond/Brown';
 // import Green from './Components/JamesBond/Green';
 // import Red from './Components/JamesBond/Red';
 // import Yellow from './Components/JamesBond/Yellow';
-import rand from './Functions/rand';
+// import rand from './Functions/rand';
 
 function App() {
 
@@ -41,17 +42,21 @@ function App() {
     // }
 
     const [visualBig, setVisualBig] = useState('square');
+    const [colorBig, setColorBig] = useState('#61dafb');
 
     return (
         <div className="App">
             <header className="App-header">
+                <div className="nice-buttons-bin">
+                    <B3 setColorBig={setColorBig}></B3>
+                </div>
                 <h1>State Uplifting</h1>
                 {/* <Blue setCount={setCount}></Blue>
                 <Green count={count}></Green>
                 <Red setVisual={setVisual} racer1={racer1} rColor={rColor} racer1c={racer1c}></Red>
                 <Brown visual={visual} setRColor={setRColor} racer2={racer2} racer2c={racer2c}></Brown>
                 <Yellow doSomething={doSomething}></Yellow> */}
-                <Visual visualBig={visualBig}></Visual>
+                <Visual visualBig={visualBig} colorBig={colorBig}></Visual>
                 <div className="nice-buttons-bin">
                     <B1 setVisualBig={setVisualBig}></B1>
                     <B2 setVisualBig={setVisualBig}></B2>
