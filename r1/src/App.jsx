@@ -1,13 +1,18 @@
+import { useState } from 'react';
 import './App.scss';
-import NiceAndFun from './Components/006/NiceAndFun';
+import Blue from './Components/JamesBond/Blue';
+import Green from './Components/JamesBond/Green';
 
 function App() {
+
+    const [count, setCount] = useState(0)
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>States & Clicks</h1>
-                <NiceAndFun spalva="#b41320"></NiceAndFun>
+                <h1>State Uplifting</h1>
+                <Blue setCount={setCount}></Blue>
+                <Green count={count}></Green>
             </header>
         </div>
     );
