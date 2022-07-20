@@ -188,10 +188,12 @@ h1.red {
     background-color: #61dafb69;
     transition: all .5s;
     border: 5px dotted #61dafb;
-    animation: App-logo-spin infinite 57s linear;
+    animation: App-logo-spin infinite 45s linear;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: wrap;
     &.circle {
         border-radius: 50%;
     }

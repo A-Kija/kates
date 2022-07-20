@@ -9,7 +9,10 @@ function Visual({visualBig, colorBig}) {
             backgroundColor: colorBig + '69',
             borderColor: colorBig,
             borderWidth: border ? null : 0
-        }}><button className="circle" onClick={() => setBorder(s => !s)}></button></div>
+        }}>
+            <button className="circle" onClick={() => setBorder(s => !s)}></button>
+
+        </div>
     );
 }
 
