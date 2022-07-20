@@ -9,6 +9,7 @@ function App() {
 
     const [count, setCount] = useState(0);
     const [visual, setVisual] = useState(false);
+    const [rColor, setRColor] = useState('white');
 
     return (
         <div className="App">
@@ -16,8 +17,8 @@ function App() {
                 <h1>State Uplifting</h1>
                 <Blue setCount={setCount}></Blue>
                 <Green count={count}></Green>
-                <Red setVisual={setVisual}></Red>
-                <Brown visual={visual}></Brown>
+                <Red setVisual={setVisual} rColor={rColor}></Red>
+                <Brown visual={visual} setRColor={setRColor}></Brown>
             </header>
         </div>
     );
