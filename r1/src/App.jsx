@@ -14,10 +14,27 @@ function App() {
     const [rColor, setRColor] = useState('white');
     const [racer1, setRacer1] = useState(0);
     const [racer2, setRacer2] = useState(0);
+    const [racer1c, setRacer1c] = useState('black');
+    const [racer2c, setRacer2c] = useState('black');
 
     const doSomething = () => {
-        setRacer1(s => s + rand(1, 5));
-        setRacer2(s => s + rand(1, 5));
+        const r1 = rand(1, 5);
+        const r2 = rand(1, 5);
+
+        if (racer1 + r1 > racer2 + r2) {
+            setRacer1c('crimson');
+            setRacer2c('gray');
+        }
+        else if (racer1 + r1 < racer2 + r2) {
+            setRacer2c('crimson');
+            setRacer1c('gray');
+        }
+        else {
+            setRacer2c('black');
+            setRacer1c('black');
+        }
+        setRacer1(s => s + r1);
+        setRacer2(s => s + r2);
     }
 
     return (
@@ -26,8 +43,8 @@ function App() {
                 <h1>State Uplifting</h1>
                 <Blue setCount={setCount}></Blue>
                 <Green count={count}></Green>
-                <Red setVisual={setVisual} racer1={racer1} rColor={rColor}></Red>
-                <Brown visual={visual} setRColor={setRColor} racer2={racer2}></Brown>
+                <Red setVisual={setVisual} racer1={racer1} rColor={rColor} racer1c={racer1c}></Red>
+                <Brown visual={visual} setRColor={setRColor} racer2={racer2} racer2c={racer2c}></Brown>
                 <Yellow doSomething={doSomething}></Yellow>
             </header>
         </div>

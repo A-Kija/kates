@@ -1,7 +1,7 @@
-function Red({setVisual, rColor, racer1}) {
+function Red({setVisual, rColor, racer1, racer1c}) {
     return (
         <>
-        <h2>{racer1}</h2>
+        <h2 style={{color:racer1c}}>{racer1}</h2>
         <div className="sc" style={{backgroundColor: rColor}}></div>
         <button onClick={() => setVisual(s => !s)}>O-[]</button>
         </>
