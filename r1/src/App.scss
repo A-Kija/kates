@@ -110,6 +110,7 @@ button {
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    position: relative;
 }
 
 .App-link {
@@ -207,4 +208,8 @@ h1.red {
     justify-content: space-between;
     align-items: center;
     margin: 45px 0;
+    &.static {
+        position:absolute;
+        top: 20px;
+    }
 }
