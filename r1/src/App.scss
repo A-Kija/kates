@@ -213,3 +213,17 @@ h1.red {
         top: 20px;
     }
 }
+
+.nice-square {
+    width: 100px;
+    height: 100px;
+    background-color: #61dafb69;
+    transition: all .5s;
+    border: 5px dotted #61dafb;
+    animation: App-logo-spin infinite 45s linear;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

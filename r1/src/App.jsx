@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.scss';
 import Buttons from './Components/008/Buttons';
+import SqGroup from './Components/008/SqGroup';
 import View from './Components/008/View';
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
                 <View view={view} activView={1}></View>
                 <View view={view} activView={2}></View>
                 <View view={view} activView={3}></View>
+                <SqGroup></SqGroup>
             </header>
         </div>
     );
