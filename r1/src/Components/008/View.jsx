@@ -1,14 +1,7 @@
-function  View({view, activView}) {
-
+function  View({view, activView, element}) {
     if (view !== activView) {
         return null;
     }
-
-    return (
-    <div>----------{activView}</div>
-    );
-
-
+    return element;
 }
-
 export default View;

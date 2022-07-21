@@ -11,10 +11,9 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <Buttons setView={setView} view={view}></Buttons>
-                <View view={view} activView={1}></View>
-                <View view={view} activView={2}></View>
-                <View view={view} activView={3}></View>
-                <SqGroup></SqGroup>
+                <View view={view} activView={1} element={<SqGroup/>}></View>
+                <View view={view} activView={2} element={null}></View>
+                <View view={view} activView={3} element={null}></View>
             </header>
         </div>
     );
