@@ -161,9 +161,9 @@ h1.red {
 
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    width: 70%;
     flex-wrap: wrap;
 }
 
@@ -220,7 +220,7 @@ h1.red {
     background-color: #61dafb69;
     transition: all .5s;
     border: 5px dotted #61dafb;
-    animation: App-logo-spin infinite 45s linear;
+    animation: App-logo-spin infinite 10s linear;
     display: flex;
     justify-content: center;
     align-items: stretch;

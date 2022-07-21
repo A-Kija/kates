@@ -7,7 +7,16 @@ function SqGroup() {
     const [sq, setSq] = useState([]);
 
     const makeIt = () => {
-        setSq([...Array(rand(5, 25))].map(_ => randColor()));
+        setSq([]);
+        const count = rand(15, 25);
+        let go = 0;
+        const timerId = setInterval(() => {
+            setSq(s => [...s, randColor()].sort((a, b) => rand(0, 1) ? 1 : -1));
+            go++;
+            if (count === go) {
+                clearInterval(timerId);
+            }
+        }, 200);
     }
 
     return (
@@ -18,7 +27,7 @@ function SqGroup() {
             {
                 sq.map((s, i) => <div className="nice-square" key={i} style={{
                     backgroundColor: s + '70',
-                    borderColor: s
+                    borderColor: s,
                 }}></div>)
             }
         </div>
