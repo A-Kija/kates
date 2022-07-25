@@ -18,9 +18,20 @@ function App() {
 
     useEffect(() => {
 
-        console.log('Kvadratukas pridetas', kv.length, a);
+      if (kv.length > 10) {
+        setKv([]);
+      }
 
     }, [kv, a]);
+
+
+    useEffect(() => {
+
+        if (kv.length === 4 && kv[3] !== 'black') {
+            setKv(kv.map((c, i) => i === 3 ? 'black' : c));
+        }
+  
+      }, [kv]);
 
 
     useEffect( () => {
