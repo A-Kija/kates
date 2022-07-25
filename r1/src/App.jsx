@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
 import Kv from './Components/009/Kv';
+import Word from './Components/009/Word';
 import randColor from './Functions/randColor';
 
 function App() {
@@ -53,13 +54,12 @@ function App() {
                         kv.map((k, i) => <Kv key={i} k={k} i={i}></Kv>)
                     }
                 </div>
-
                 <div className="container">
-
                 <button onClick={add}>add []</button>
                 <button onClick={() => setCount(c => c + 1)}>+ 1</button>
-
                 </div>
+
+                <Word color='yellow'></Word>
 
             </header>
         </div>
