@@ -1,23 +1,55 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
-import Buttons from './Components/008/Buttons';
-import HelloWorld from './Components/008/HelloWorld';
-import HelloWorld2 from './Components/008/HelloWorld2';
-import SC from './Components/008/SC';
-import SqGroup from './Components/008/SqGroup';
-import View from './Components/008/View';
+import Kv from './Components/009/Kv';
+import randColor from './Functions/randColor';
+
 function App() {
 
-    const [view, setView] = useState(0);
+    const [kv, setKv] = useState([]);
+    const [count, setCount] = useState(0);
+
+    const add = () => {
+        setKv(k => [...k, randColor()]);
+        
+    }
+
+    let a = 25;
+
+    useEffect(() => {
+
+        console.log('Kvadratukas pridetas', kv.length, a);
+
+    }, [kv, a]);
+
+
+    useEffect( () => {
+
+        if (count > 10) {
+            setCount(0);
+        }
+
+    }, [count]);
+
+
 
     return (
         <div className="App">
             <header className="App-header">
-                <Buttons setView={setView} view={view}></Buttons>
-                <View view={view} activView={1} element={<SqGroup/>}></View>
-                <View view={view} activView={2} element={<HelloWorld/>}></View>
-                <View view={view} activView={3} element={<HelloWorld2/>}></View>
-                <View view={view} activView={4} element={<SC/>}></View>
+                <h1>useEffect --- {count}</h1>
+                <div className="container">
+                    {
+                        kv.map((k, i) => <Kv key={i} k={k} i={i}></Kv>)
+                    }
+                </div>
+
+                <div className="container">
+
+                <button onClick={add}>add []</button>
+                <button onClick={() => setCount(c => c + 1)}>+ 1</button>
+
+                </div>
+
             </header>
         </div>
     );
