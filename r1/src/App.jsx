@@ -2,8 +2,16 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
 import Kv from './Components/009/Kv';
+import LeftRight from './Components/009/LeftRight';
 import Word from './Components/009/Word';
 import randColor from './Functions/randColor';
+
+const magicNumbers = [
+    {left: 5, right: 11},
+    {left: 45, right: 0},
+    {left: 4, right: 22},
+    {left: 13, right: 13}
+];
 
 function App() {
 
@@ -60,6 +68,7 @@ function App() {
                 </div>
 
                 <Word color='yellow'></Word>
+                <LeftRight data={magicNumbers}></LeftRight>
 
             </header>
         </div>
