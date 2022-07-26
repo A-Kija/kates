@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
-import Kv from './Components/009/Kv';
+// import Kv from './Components/009/Kv';
 import LeftRight from './Components/009/LeftRight';
-import Word from './Components/009/Word';
-import randColor from './Functions/randColor';
+// import Word from './Components/009/Word';
+// import randColor from './Functions/randColor';
 
 const magicNumbers = [
     {left: 5, right: 11},
@@ -18,10 +18,10 @@ function App() {
     const [kv, setKv] = useState([]);
     const [count, setCount] = useState(0);
 
-    const add = () => {
-        setKv(k => [...k, randColor()]);
+    // const add = () => {
+    //     setKv(k => [...k, randColor()]);
         
-    }
+    // }
 
     let a = 25;
 
@@ -56,7 +56,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>useEffect --- {count}</h1>
+                {/* <h1>useEffect --- {count}</h1>
                 <div className="container">
                     {
                         kv.map((k, i) => <Kv key={i} k={k} i={i}></Kv>)
@@ -67,7 +67,7 @@ function App() {
                 <button onClick={() => setCount(c => c + 1)}>+ 1</button>
                 </div>
 
-                <Word color='yellow'></Word>
+                <Word color='yellow'></Word> */}
                 <LeftRight data={magicNumbers}></LeftRight>
 
             </header>
