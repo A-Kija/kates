@@ -17,7 +17,7 @@ function Select() {
 
     return (
         <fieldset>
-            <legend>Selected: <b>{select}</b></legend>
+            <legend>Selected: <b>{select} {selectData.find(s => select == s.value).text}</b></legend>
             <select value={select} onChange={selectHandler}>
                 {
                     selectData.map(s => <option key={s.value} value={s.value}>{s.text}</option>)
