@@ -15,13 +15,17 @@ function Select() {
 
     const [colorInput, setColorInput] = useState('#ffffff');
 
+    const [count, setCount] = useState(0);
+
     const selectHandler = e => {
-        setSelect(e.target.value)
+        setSelect(e.target.value);
+        setCount(c => c + 1);
     }
 
     return (
         <fieldset>
             <legend style={{color}}>Selected: <b>{select} {selectData.find(s => select == s.value).text}</b></legend>
+            <h4>Select Count: {count}</h4>
             <select value={select} onChange={selectHandler}>
                 {
                     selectData.map(s => <option key={s.value} value={s.value}>{s.text}</option>)
