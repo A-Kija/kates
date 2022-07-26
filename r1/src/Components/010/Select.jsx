@@ -11,18 +11,21 @@ function Select() {
 
     const [select, setSelect] = useState(5);
 
+    const [color, setColor] = useState(null);
+
     const selectHandler = e => {
         setSelect(e.target.value)
     }
 
     return (
         <fieldset>
-            <legend>Selected: <b>{select} {selectData.find(s => select == s.value).text}</b></legend>
+            <legend style={{color}}>Selected: <b>{select} {selectData.find(s => select == s.value).text}</b></legend>
             <select value={select} onChange={selectHandler}>
                 {
                     selectData.map(s => <option key={s.value} value={s.value}>{s.text}</option>)
                 }
             </select>
+            <button onClick={() => setColor('crimson')}>Make Color</button>
         </fieldset>
     );
 }
