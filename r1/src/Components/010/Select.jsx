@@ -13,6 +13,8 @@ function Select() {
 
     const [color, setColor] = useState(null);
 
+    const [colorInput, setColorInput] = useState('#ffffff');
+
     const selectHandler = e => {
         setSelect(e.target.value)
     }
@@ -25,7 +27,8 @@ function Select() {
                     selectData.map(s => <option key={s.value} value={s.value}>{s.text}</option>)
                 }
             </select>
-            <button onClick={() => setColor('crimson')}>Make Color</button>
+            <button onClick={() => setColor(colorInput)}>Make Color</button>
+            <input type="color" value={colorInput} onChange={e => setColorInput(e.target.value)}></input>
         </fieldset>
     );
 }
