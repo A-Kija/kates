@@ -9,8 +9,10 @@ function Text() {
 
     return (
         <fieldset>
-            <legend>text</legend>
+            <legend>{text ? text : 'text'}</legend>
             <input type="text" value={text} onChange={inputHandler}></input>
+            <div></div>
+            <input type="color"></input>
         </fieldset>
     );
 }
