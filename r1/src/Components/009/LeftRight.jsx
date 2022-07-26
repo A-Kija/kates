@@ -6,6 +6,21 @@ function LeftRight({data}) {
 
     const [numbers, setNumbers] = useState(null);
 
+    const [sortOrder, setSortOrder] = useState(null)
+
+
+    useEffect(() => {
+        if (null === sortOrder) {
+            return;
+        }
+        if ('left' === sortOrder) {
+            setNumbers(n => [...n].sort((a, b) => b.left - a.left));
+        } else if ('right' === sortOrder) {
+            setNumbers(n => [...n].sort((a, b) => b.right - a.right));
+        } else {
+            setNumbers(n => [...n].sort((a, b) => a.row - b.row));
+        }
+    }, [sortOrder]);
 
 
     useEffect(()=> {
@@ -44,6 +59,10 @@ function LeftRight({data}) {
             <button className="blue" onClick={doLeft}>Left Sort</button>
             <button className="blue" onClick={doRight}>Right Sort</button>
             <button className="blue" onClick={doDefault}>Default Sort</button>
+
+            <button className="red" onClick={() => setSortOrder('left')}>Left Sort</button>
+            <button className="red" onClick={() => setSortOrder('right')}>Right Sort</button>
+            <button className="red" onClick={() => setSortOrder('default')}>Default Sort</button>
         </div>
         </>
     )
