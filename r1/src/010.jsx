@@ -1,5 +1,7 @@
 import './App.scss';
-import AnimalsList from './Components/011/AnimalsList';
+import Select from './Components/010/Select';
+import Text from './Components/010/Text';
+
 function App() {
 
    
@@ -7,8 +9,9 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Form Control 2</h1>
-                <AnimalsList/>
+                <h1>Form Control</h1>
+                <Text></Text>
+                <Select></Select>
             </header>
         </div>
     );
