@@ -320,3 +320,15 @@ h1.red {
         border: 1px solid orangered;
     }
 }
+
+.check-box-2 {
+    label {
+        cursor: pointer;
+    }
+    input {
+        display: none;
+    }
+    input:checked + label {
+        color: crimson;
+    }
+}

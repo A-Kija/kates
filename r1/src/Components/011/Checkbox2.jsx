@@ -13,12 +13,12 @@ function Checkbox2() {
     }
 
     return (
-        <fieldset>
+        <fieldset className="check-box-2">
             <legend>Checkbox 2: {[...cb].sort().map(c => <span key={c}>{c}</span>)}</legend>
-            <div>A <input type="checkbox" value="A" checked={cb.has('A')} onChange={doChange}></input></div>
-            <div>B <input type="checkbox" value="B" checked={cb.has('B')} onChange={doChange}></input></div>
-            <div>C <input type="checkbox" value="C" checked={cb.has('C')} onChange={doChange}></input></div>
-            <div>D <input type="checkbox" value="D" checked={cb.has('D')} onChange={doChange}></input></div>
+            <div> <input id="_A" type="checkbox" value="A" checked={cb.has('A')} onChange={doChange}></input><label htmlFor="_A">A</label></div>
+            <div> <input id="_B" type="checkbox" value="B" checked={cb.has('B')} onChange={doChange}></input><label htmlFor="_B">B</label></div>
+            <div> <input id="_C" type="checkbox" value="C" checked={cb.has('C')} onChange={doChange}></input><label htmlFor="_C">C</label></div>
+            <div> <input id="_D" type="checkbox" value="D" checked={cb.has('D')} onChange={doChange}></input><label htmlFor="_D">D</label></div>
         </fieldset>
     )
 
