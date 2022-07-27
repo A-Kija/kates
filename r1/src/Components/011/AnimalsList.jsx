@@ -12,6 +12,10 @@ function AnimalsList() {
         setAge('');
     }
 
+    const sort = () => {
+        setList(l => [...l].sort((a, b) => a.animal.localeCompare(b.animal)));
+    }
+
     return (
         <div className="animals-list">
             <div className="inputs">
@@ -32,6 +36,7 @@ function AnimalsList() {
                 {
                     list.map((a, i) => <div key={i}><b>{i + 1}.</b> <span>{a.animal}</span> <i>Age: {a.age} years</i></div>)
                 }
+                <button className="red" onClick={sort}>Sort</button>
             </div>
 
         </div>
