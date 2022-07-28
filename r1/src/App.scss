@@ -391,13 +391,13 @@ h1.red {
                 background-color: #61dafb69;
                 transition: all .2s;
                 border: 5px dotted #61dafb;
-                animation: App-logo-spin infinite 10s linear;
+                animation: App-logo-spin infinite 10s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 border-radius: 50%;
                 &.sec {
-                    animation: App-logo-spin infinite 3s linear;
+                    animation: App-logo-spin infinite 3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 }
                 &.thi {
-                    animation: App-logo-spin infinite 20s linear;
+                    animation: App-logo-spin infinite 20s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 }
             }
         }
