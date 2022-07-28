@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 import './App.scss';
-import Radio from './Components/012/Radio';
+import Range from './Components/012/Range';
 // import BlueRed from './Components/012/BlueRed';
 // import Green from './Components/012/Green';
 // import Show from './Components/012/Show';
@@ -24,7 +24,7 @@ function App() {
                 <TextBla2 setWord={setWord} /> */}
                 {/* <Green doBrown={doBrown} setText={setText}  text={text} /> */}
                 {/* <BlueRed /> */}
-                <Radio />
+                <Range />
                 
             </header>
         </div>

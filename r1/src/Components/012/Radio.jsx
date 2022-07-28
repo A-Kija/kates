@@ -17,7 +17,6 @@ function Radio() {
         </div>
     );
 
-
 }
 
 export default Radio;
