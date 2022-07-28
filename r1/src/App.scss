@@ -383,7 +383,9 @@ h1.red {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
             .nice {
+                position: absolute;
                 width: 100px;
                 height: 100px;
                 background-color: #61dafb69;
@@ -391,6 +393,12 @@ h1.red {
                 border: 5px dotted #61dafb;
                 animation: App-logo-spin infinite 10s linear;
                 border-radius: 50%;
+                &.sec {
+                    animation: App-logo-spin infinite 3s linear;
+                }
+                &.thi {
+                    animation: App-logo-spin infinite 20s linear;
+                }
             }
         }
     }

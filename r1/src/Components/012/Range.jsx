@@ -17,6 +17,14 @@ function Range() {
                         width: w + 'px',
                         height: h + 'px'
                     }}></div>
+                    <div className="nice sec" style={{
+                        width: w + 'px',
+                        height: h + 'px'
+                    }}></div>
+                    <div className="nice thi" style={{
+                        width: w + 'px',
+                        height: h + 'px'
+                    }}></div>
                 </div>
             </div>
             <div className="big-bin__bottom">
