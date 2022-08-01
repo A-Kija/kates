@@ -418,3 +418,23 @@ h1.red {
         }
     }
 }
+
+.view-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+    flex-wrap: wrap;
+    .sq {
+        width: 100px;
+        height: 100px;
+        background-color: coral;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+    }
+}
+
