@@ -13,7 +13,6 @@ function View({sq, setSq}) {
                 <span className="id-number">{s.id}</span>
                 <button className="red" onClick={() => remove(s.id)}>delete</button>
                 </div>
-                
                 ))
             }
         </div>

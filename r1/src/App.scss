@@ -26,7 +26,6 @@ button {
     overflow: hidden;
     cursor: pointer;
     margin: 5px;
-
     &:before {
         content: "";
         position: absolute;
@@ -89,6 +88,19 @@ button {
 
     &.circle {
         border-radius: 50%;
+    }
+    &:disabled {
+        color: gray;
+        background: gray;
+        color: white;
+        cursor: not-allowed;
+
+        &:before {
+            background-color: gray;
+        }
+        &:hover {
+            color: white;
+        }
     }
 }
 
@@ -454,10 +466,10 @@ h1.red {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         color: white;
         font-weight: bold;
         overflow: hidden;
-        word-wrap: break-word;
         position: relative;
         .id-number {
             position: absolute;
