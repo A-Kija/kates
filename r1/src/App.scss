@@ -458,6 +458,13 @@ h1.red {
         font-weight: bold;
         overflow: hidden;
         word-wrap: break-word;
+        position: relative;
+        .id-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0 8px;
+        }
     }
 }
 .inputs-bin {
@@ -465,9 +472,27 @@ h1.red {
         font-size: 18px;
         border: none;
         outline: none;
-        background-color: lightgreen;
+        background-color: black;
         padding: 5px;
         margin-bottom: 15px;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        letter-spacing: 3px;
+    }
+    label {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: inline-block;
+        border: 3px solid black;
+        box-sizing: border-box;
+        margin: 0 10px;
+    }
+    input:checked + label {
+        border-color: white;
+    }
+    input[type=checkbox] {
+        display: none;
     }
 }
 
