@@ -419,15 +419,36 @@ h1.red {
     }
 }
 
+.two-col {
+    margin: 30px 0;
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 90vh;
+    .one {
+        width: 20%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start; 
+    }
+    .two {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+}
+
 .view-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 70%;
+    width: 100%;
     flex-wrap: wrap;
     .sq {
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
         background-color: coral;
         margin: 10px;
         display: flex;
@@ -435,6 +456,18 @@ h1.red {
         align-items: center;
         color: white;
         font-weight: bold;
+        overflow: hidden;
+        word-wrap: break-word;
+    }
+}
+.inputs-bin {
+    input {
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: lightgreen;
+        padding: 5px;
+        margin-bottom: 15px;
     }
 }
 

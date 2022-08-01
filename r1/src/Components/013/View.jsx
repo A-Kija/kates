@@ -3,7 +3,7 @@ function View({sq}) {
     return (
         <div className="view-container">
             {
-                sq.map((_, i) => <div className="sq" key={i}></div>)
+                sq.map((s, i) => <div className="sq" key={i}>{s}</div>)
             }
         </div>
     )

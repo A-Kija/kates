@@ -1,13 +1,18 @@
+import { useState } from "react";
+
 function Inputs({setSq}) {
 
+    const [text, setText] = useState('');
+
     const add = () => {
-        setSq(s => [...s, 1]);
+        setSq(s => [...s, text]);
+        setText('');
     }
 
     return (
         <div className="inputs-bin">
-
-            <button onClick={add}>Add []</button>
+            <input onChange={e => setText(e.target.value)} value={text} />
+            <button className="red" onClick={add}>Add []</button>
         </div>
     )
 }

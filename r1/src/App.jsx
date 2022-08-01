@@ -9,9 +9,10 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Tema 2</h1> 
-                <Inputs setSq={setSq}/>
-                <View sq={sq}/>
+                <div className="two-col">
+                    <div className="one"><Inputs setSq={setSq} /></div>
+                    <div className="two"><View sq={sq} /></div>
+                </div>
             </header>
         </div>
     );
