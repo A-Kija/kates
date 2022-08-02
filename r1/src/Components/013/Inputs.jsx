@@ -25,7 +25,8 @@ function Inputs({ setSq, sqId, sq }) {
             return;
         }
         setSq(sq => sq.map(s => s.id !== parseInt(select) ? {...s} : {...s, size: parseInt(size)}))
-    }, [size]);
+    }, [size, select, setSq]);
+
 
     useEffect(() => {
         if (0 === parseInt(select)) {
