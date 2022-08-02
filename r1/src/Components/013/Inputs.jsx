@@ -37,29 +37,42 @@ function Inputs({ setSq, sqId }) {
     }
 
     const showGreen = () => {
-        setSq(s => s.map(sq => ({...sq, show: sq.color === 'greenyellow' ? true : false})))
+        setSq(s => s.map(sq => ({ ...sq, show: sq.color === 'greenyellow' ? true : false })))
     }
 
     const showAll = () => {
-        setSq(s => s.map(sq => ({...sq, show: true})))
+        setSq(s => s.map(sq => ({ ...sq, show: true })))
     }
 
     return (
         <div className="inputs-bin">
-            <div>
+            <div className="bin">
                 <input id="coral" type="checkbox" checked={color === 'coral'} value="coral" onChange={e => setColor(e.target.value)}></input>
                 <label htmlFor="coral" style={{ backgroundColor: 'coral' }}></label>
                 <input id="greenyellow" type="checkbox" checked={color === 'greenyellow'} value="greenyellow" onChange={e => setColor(e.target.value)}></input>
                 <label htmlFor="greenyellow" style={{ backgroundColor: 'greenyellow' }}></label>
                 <input id="plum" type="checkbox" checked={color === 'plum'} value="plum" onChange={e => setColor(e.target.value)}></input>
                 <label htmlFor="plum" style={{ backgroundColor: 'plum' }}></label>
+                <span>Color</span>
             </div>
-            <input onChange={addText} value={text} ref={textInput} />
+            <div className="bin">
+                <input onChange={addText} value={text} ref={textInput} />
+                <span>Text</span>
+            </div>
+            <div className="bin">
             <button className="green" onClick={add} disabled={disabled}>Add []</button>
-            <button className="blue" onClick={sort}>Sort</button>
-            <button className="blue" onClick={sortBack}>Sort Back</button>
-            <button className="blue" onClick={showGreen}>Show Green</button>
-            <button className="blue" onClick={showAll}>Show All</button>
+            <span>Add New</span>
+            </div>
+            <div className="bin">
+                <button className="blue" onClick={sort}>Sort</button>
+                <button className="blue" onClick={sortBack}>Sort Back</button>
+                <span>Sort</span>
+            </div>
+            <div className="bin">
+                <button className="blue" onClick={showGreen}>Show Green</button>
+                <button className="blue" onClick={showAll}>Show All</button>
+                <span>Filter</span>
+            </div>
         </div>
     )
 }
