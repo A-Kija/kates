@@ -7,7 +7,7 @@ function Inputs({ setSq, sqId }) {
     const [text, setText] = useState('');
     const [color, setColor] = useState('coral');
     const [disabled, setDisabled] = useState(true);
-    const [type, setType] = useState(false);
+    const [type, setType] = useState(0);
     const textInput = useRef();
 
     useEffect(() => {
@@ -46,7 +46,7 @@ function Inputs({ setSq, sqId }) {
     }
 
     const doType = () => {
-        setType(t => !t);
+        setType(t => t === 3 ? 0 : t + 1);
     }
 
     return (
@@ -60,9 +60,11 @@ function Inputs({ setSq, sqId }) {
                 <label className="color" htmlFor="plum" style={{ backgroundColor: 'plum' }}></label>
                 <span>Color</span>
             </div>
+
             <div className="bin">
-                <input type="checkbox" id="type" onChange={doType} checked={type} />
-                <label className="type" htmlFor="type"></label>
+                <input type="checkbox" id="type" checked={type > 1} />
+                <input type="checkbox" id="type" checked={!(type % 2)} />
+                <label className="type" onClick={doType}></label>
                 <span>Type</span>
             </div>
             <div className="bin">

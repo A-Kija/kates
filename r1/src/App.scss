@@ -26,6 +26,7 @@ button {
     overflow: hidden;
     cursor: pointer;
     margin: 5px;
+
     &:before {
         content: "";
         position: absolute;
@@ -89,6 +90,7 @@ button {
     &.circle {
         border-radius: 50%;
     }
+
     &:disabled {
         color: gray;
         background: gray;
@@ -98,6 +100,7 @@ button {
         &:before {
             background-color: gray;
         }
+
         &:hover {
             color: white;
         }
@@ -312,6 +315,7 @@ h1.red {
             justify-content: center;
             align-items: center;
             flex-direction: column;
+
             input {
                 border: none;
                 font-size: 20px;
@@ -338,10 +342,12 @@ h1.red {
     label {
         cursor: pointer;
     }
+
     input {
         display: none;
     }
-    input:checked + label {
+
+    input:checked+label {
         color: crimson;
     }
 }
@@ -355,6 +361,7 @@ h1.red {
     justify-content: flex-start;
     align-items: center;
     border: 1px solid skyblue;
+
     input {
         border: none;
         font-size: 20px;
@@ -372,12 +379,14 @@ h1.red {
     align-items: center;
     margin: 20px;
     flex-direction: column;
+
     &__top {
         width: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         min-height: 900px;
+
         &__left {
             width: 10%;
             display: flex;
@@ -385,17 +394,20 @@ h1.red {
             align-items: center;
             flex-direction: column;
             min-height: 900px;
+
             input {
                 transform: rotate(-90deg);
                 width: 800px;
             }
         }
+
         &__right {
             width: 90%;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+
             .nice {
                 position: absolute;
                 width: 100px;
@@ -405,24 +417,29 @@ h1.red {
                 border: 5px dotted #61dafb;
                 animation: App-logo-spin infinite 10s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 border-radius: 50%;
+
                 &.sec {
                     animation: App-logo-spin infinite 3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 }
+
                 &.thi {
                     animation: App-logo-spin infinite 20s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 }
             }
         }
     }
+
     &__bottom {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 20px 0;
+
         input {
             width: 800px;
         }
+
         span {
             display: inline-block;
             width: 100px;
@@ -438,17 +455,19 @@ h1.red {
     justify-content: flex-start;
     align-items: flex-start;
     min-height: 90vh;
+
     .one {
         width: 40%;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
     }
+
     .two {
         width: 60%;
         display: flex;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
     }
 }
 
@@ -458,6 +477,7 @@ h1.red {
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
+
     .sq {
         width: 200px;
         height: 200px;
@@ -471,17 +491,41 @@ h1.red {
         font-weight: bold;
         overflow: hidden;
         position: relative;
+
         .id-number {
             position: absolute;
             top: 0;
             right: 0;
             margin: 0 8px;
         }
+
+        &.s0 {
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
         &.s1 {
             border-top-left-radius: 70px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+
+        &.s3 { 
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 70px;
+            border-bottom-left-radius: 0;
+        }
+
+        &.s2 { 
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 70px;
         }
     }
 }
+
 .inputs-bin {
     .bin {
         width: 100%;
@@ -489,6 +533,7 @@ h1.red {
         margin: 30px;
         border: 1px dashed #ffffff30;
         position: relative;
+
         span {
             position: absolute;
             background-color: #282c34;
@@ -504,6 +549,7 @@ h1.red {
             font-size: 20px;
         }
     }
+
     input {
         font-size: 18px;
         border: none;
@@ -515,6 +561,7 @@ h1.red {
         font-family: 'Courier New', Courier, monospace;
         letter-spacing: 3px;
     }
+
     label.color {
         width: 30px;
         height: 30px;
@@ -525,26 +572,52 @@ h1.red {
         margin: 0 10px;
         transition: all 0.3s;
     }
-    input:checked + label.color {
+
+    input:checked+label.color {
         border-color: white;
     }
 
     label.type {
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
         cursor: pointer;
         display: inline-block;
         margin: 0 10px;
-        background-color: #dc143c;
+        border: 3px solid white;
         transition: all 0.1s;
     }
-    input:checked + label.type {
-        border-top-left-radius: 12px;
+
+
+
+    input {
+        &+input+label.type {
+            border-top-left-radius: 22px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &+input:checked+label.type {
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
     }
 
+    input:checked {
+        &+input+label.type {
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 22px;
+            border-bottom-left-radius: 0;
+        }
+
+        &+input:checked+label.type {
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 22px;
+        }
+    }
 
     input[type=checkbox] {
         display: none;
     }
 }
-
