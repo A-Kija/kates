@@ -7,6 +7,7 @@ function Inputs({ setSq, sqId }) {
     const [text, setText] = useState('');
     const [color, setColor] = useState('coral');
     const [disabled, setDisabled] = useState(true);
+    const [type, setType] = useState(false);
     const textInput = useRef();
 
     useEffect(() => {
@@ -24,7 +25,7 @@ function Inputs({ setSq, sqId }) {
     }
 
     const add = () => {
-        setSq(s => [...s, { text, color, id: sqId.current++, show: true }]);
+        setSq(s => [...s, { text, color, type, id: sqId.current++, show: true }]);
         setText('');
     }
 
@@ -44,19 +45,28 @@ function Inputs({ setSq, sqId }) {
         setSq(s => s.map(sq => ({ ...sq, show: true })))
     }
 
+    const doType = () => {
+        setType(t => !t);
+    }
+
     return (
         <div className="inputs-bin">
             <div className="bin">
                 <input id="coral" type="checkbox" checked={color === 'coral'} value="coral" onChange={e => setColor(e.target.value)}></input>
-                <label htmlFor="coral" style={{ backgroundColor: 'coral' }}></label>
+                <label className="color" htmlFor="coral" style={{ backgroundColor: 'coral' }}></label>
                 <input id="greenyellow" type="checkbox" checked={color === 'greenyellow'} value="greenyellow" onChange={e => setColor(e.target.value)}></input>
-                <label htmlFor="greenyellow" style={{ backgroundColor: 'greenyellow' }}></label>
+                <label className="color" htmlFor="greenyellow" style={{ backgroundColor: 'greenyellow' }}></label>
                 <input id="plum" type="checkbox" checked={color === 'plum'} value="plum" onChange={e => setColor(e.target.value)}></input>
-                <label htmlFor="plum" style={{ backgroundColor: 'plum' }}></label>
+                <label className="color" htmlFor="plum" style={{ backgroundColor: 'plum' }}></label>
                 <span>Color</span>
             </div>
             <div className="bin">
-                <input onChange={addText} value={text} ref={textInput} />
+                <input type="checkbox" id="type" onChange={doType} checked={type} />
+                <label className="type" htmlFor="type"></label>
+                <span>Type</span>
+            </div>
+            <div className="bin">
+                <input type="text" onChange={addText} value={text} ref={textInput} />
                 <span>Text</span>
             </div>
             <div className="bin">

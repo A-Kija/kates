@@ -477,6 +477,9 @@ h1.red {
             right: 0;
             margin: 0 8px;
         }
+        &.s1 {
+            border-top-left-radius: 70px;
+        }
     }
 }
 .inputs-bin {
@@ -512,7 +515,7 @@ h1.red {
         font-family: 'Courier New', Courier, monospace;
         letter-spacing: 3px;
     }
-    label {
+    label.color {
         width: 30px;
         height: 30px;
         cursor: pointer;
@@ -520,10 +523,26 @@ h1.red {
         border: 3px solid black;
         box-sizing: border-box;
         margin: 0 10px;
+        transition: all 0.3s;
     }
-    input:checked + label {
+    input:checked + label.color {
         border-color: white;
     }
+
+    label.type {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 10px;
+        background-color: #dc143c;
+        transition: all 0.1s;
+    }
+    input:checked + label.type {
+        border-top-left-radius: 12px;
+    }
+
+
     input[type=checkbox] {
         display: none;
     }
