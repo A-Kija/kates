@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -6,19 +7,24 @@ function Inputs({ setSq, sqId }) {
     const [text, setText] = useState('');
     const [color, setColor] = useState('coral');
     const [disabled, setDisabled] = useState(true);
+    const textInput = useRef();
 
     useEffect(() => {
         setDisabled(text.length < 3);
-    }, [text])
+    }, [text]);
+
+
+    useEffect(() => {
+        textInput.current.focus();
+    }, []);
 
 
     const addText = e => {
         setText(e.target.value);
     }
 
-
     const add = () => {
-        setSq(s => [...s, { text, color, id: sqId.current++ }]);
+        setSq(s => [...s, { text, color, id: sqId.current++, show: true }]);
         setText('');
     }
 
@@ -28,6 +34,14 @@ function Inputs({ setSq, sqId }) {
 
     const sortBack = () => {
         setSq(s => [...s].sort((a, b) => a.id - b.id));
+    }
+
+    const showGreen = () => {
+        setSq(s => s.map(sq => ({...sq, show: sq.color === 'greenyellow' ? true : false})))
+    }
+
+    const showAll = () => {
+        setSq(s => s.map(sq => ({...sq, show: true})))
     }
 
     return (
@@ -40,10 +54,12 @@ function Inputs({ setSq, sqId }) {
                 <input id="plum" type="checkbox" checked={color === 'plum'} value="plum" onChange={e => setColor(e.target.value)}></input>
                 <label htmlFor="plum" style={{ backgroundColor: 'plum' }}></label>
             </div>
-            <input onChange={addText} value={text} />
+            <input onChange={addText} value={text} ref={textInput} />
             <button className="green" onClick={add} disabled={disabled}>Add []</button>
             <button className="blue" onClick={sort}>Sort</button>
             <button className="blue" onClick={sortBack}>Sort Back</button>
+            <button className="blue" onClick={showGreen}>Show Green</button>
+            <button className="blue" onClick={showAll}>Show All</button>
         </div>
     )
 }

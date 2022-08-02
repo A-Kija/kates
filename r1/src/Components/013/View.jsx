@@ -7,12 +7,14 @@ function View({sq, setSq}) {
     return (
         <div className="view-container">
             {
-                sq.map(s => (
+                sq.map(s => ( s.show ?
                 <div className="sq" key={s.id} style={{backgroundColor:s.color}}>
                     {s.text}
                 <span className="id-number">{s.id}</span>
                 <button className="red" onClick={() => remove(s.id)}>delete</button>
                 </div>
+                :
+                null
                 ))
             }
         </div>
