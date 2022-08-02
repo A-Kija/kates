@@ -13,7 +13,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className="two-col">
-                    <div className="one"><Inputs setSq={setSq} sqId={sqId} /></div>
+                    <div className="one"><Inputs setSq={setSq} sqId={sqId} sq={sq} /></div>
                     <div className="two"><View sq={sq} setSq={setSq}/></div>
                 </div>
             </header>
