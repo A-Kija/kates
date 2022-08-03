@@ -14,7 +14,18 @@ function Sq1({setCounter}) {
     }, [sq, setCounter]);
 
     const add = () => {
-        setSq(s => [...s, {color: 'pink', type: rand(0, 1)}, {color: 'skyblue', type: rand(0, 1)}]);
+        setSq(s => [...s, 
+            {color: 'pink', type: rand(0, 1), size: rand(25, 125), row: s.length},
+            {color: 'skyblue', type: rand(0, 1), size: rand(25, 125), row: s.length + 1}
+        ]);
+    }
+
+    const sort = () => {
+        setSq(s => [...s].sort((a, b) => b.size - a.size));
+    }
+
+    const sortBack = () => {
+        setSq(s => [...s].sort((a, b) => a.row - b.row));
     }
 
     return (
@@ -23,12 +34,16 @@ function Sq1({setCounter}) {
             {
                 sq.map((s, i) => <div className="sc" style={{
                     backgroundColor:s.color,
-                    borderRadius: s.type ? '50%' : null
+                    borderRadius: s.type ? '50%' : null,
+                    width: s.size + 'px',
+                    height: s.size + 'px'
                 }} key={i}></div>)
             }
         </div>
         <div className="container">
             <button onClick={add}>add</button>
+            <button onClick={sort}>sort</button>
+            <button onClick={sortBack}>sort back</button>
         </div>
         </>
     )
