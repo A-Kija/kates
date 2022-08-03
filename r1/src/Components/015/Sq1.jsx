@@ -1,18 +1,30 @@
-import { useState } from "react"
+import { useEffect } from "react";
+import { useState } from "react";
+import rand from '../../Functions/rand';
 
-function Sq1() {
+function Sq1({setCounter}) {
 
     const [sq, setSq] = useState([]);
 
+    useEffect(() => {
+        setCounter(s => [
+            sq.filter(s => s.type === 0).length,
+            sq.filter(s => s.type === 1).length
+        ]);
+    }, [sq, setCounter]);
+
     const add = () => {
-        setSq(s => [...s, '', '']);
+        setSq(s => [...s, {color: 'pink', type: rand(0, 1)}, {color: 'skyblue', type: rand(0, 1)}]);
     }
 
     return (
         <>
         <div className="container">
             {
-                sq.map((_, i) => <div className="sc" key={i}></div>)
+                sq.map((s, i) => <div className="sc" style={{
+                    backgroundColor:s.color,
+                    borderRadius: s.type ? '50%' : null
+                }} key={i}></div>)
             }
         </div>
         <div className="container">
