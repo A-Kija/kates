@@ -40,6 +40,18 @@ function Sq1({setCounter}) {
         setSq(s => s.map(f => ({...f, show: true})))
     }
 
+    const sortFancy = () => {
+        setSq(s => [...s].sort((a, b) => {
+            if (a.type === 1 && b.type === 0) {
+                return 1;
+            }
+            if (a.type === 0 && b.type ===1) {
+                return -1;
+            }
+            return b.size - a.size;
+        }))
+    }
+
     return (
         <>
         <div className="container">
@@ -56,6 +68,7 @@ function Sq1({setCounter}) {
             <button onClick={add}>add</button>
             <button onClick={sort}>sort</button>
             <button onClick={sortBack}>sort back</button>
+            <button onClick={sortFancy}>fancy sort</button>
             <button className="red" onClick={filterSq}>show []</button>
             <button className="red" onClick={filterCi}>show O</button>
             <button className="red" onClick={filterAll}>show all</button>
