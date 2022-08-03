@@ -15,8 +15,8 @@ function Sq1({setCounter}) {
 
     const add = () => {
         setSq(s => [...s, 
-            {color: 'pink', type: rand(0, 1), size: rand(25, 125), row: s.length},
-            {color: 'skyblue', type: rand(0, 1), size: rand(25, 125), row: s.length + 1}
+            {color: 'pink', type: rand(0, 1), size: rand(25, 125), row: s.length, show: true},
+            {color: 'skyblue', type: rand(0, 1), size: rand(25, 125), row: s.length + 1, show: true}
         ]);
     }
 
@@ -28,22 +28,37 @@ function Sq1({setCounter}) {
         setSq(s => [...s].sort((a, b) => a.row - b.row));
     }
 
+    const filterSq = () => {
+        setSq(s => s.map(f => ({...f, show: f.type ? false : true})))
+    }
+
+    const filterCi = () => {
+        setSq(s => s.map(f => ({...f, show: f.type ? true : false})))
+    }
+
+    const filterAll = () => {
+        setSq(s => s.map(f => ({...f, show: true})))
+    }
+
     return (
         <>
         <div className="container">
             {
-                sq.map((s, i) => <div className="sc" style={{
+                sq.map((s, i) => s.show ? <div className="sc" style={{
                     backgroundColor:s.color,
                     borderRadius: s.type ? '50%' : null,
                     width: s.size + 'px',
                     height: s.size + 'px'
-                }} key={i}></div>)
+                }} key={i}></div> : null)
             }
         </div>
         <div className="container">
             <button onClick={add}>add</button>
             <button onClick={sort}>sort</button>
             <button onClick={sortBack}>sort back</button>
+            <button className="red" onClick={filterSq}>show []</button>
+            <button className="red" onClick={filterCi}>show O</button>
+            <button className="red" onClick={filterAll}>show all</button>
         </div>
         </>
     )
