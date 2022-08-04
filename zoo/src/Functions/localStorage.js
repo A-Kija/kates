@@ -29,6 +29,17 @@ export function create(key, data) {
 export function destroy(key, id) {
     const data = getFromLocalStorage(key);
     localStorage.setItem(key + '_id', JSON.stringify(
-        data.filter(d => d.id != id)
+        data.filter(d => d.id !== id)
     ));
+}
+
+export function edit(key, newData, id) {
+    const data = getFromLocalStorage(key);
+    localStorage.setItem(key + '_id', JSON.stringify(
+        data.map(d => d.id === id ? {...newData, id: id } : {...d })
+    ));
+}
+
+export function read(key) {
+    return getFromLocalStorage(key);
 }
