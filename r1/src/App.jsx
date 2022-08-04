@@ -1,17 +1,20 @@
-import { useState } from 'react';
 import './App.scss';
-import LocalStorage from './Components/015/LocalStorage';
-// import Sq1 from './Components/015/Sq1';
+import A3 from './Components/016/A3';
+import ContextAbc from './Components/016/ContextAbc';
 function App() {
 
-    const [counter, setCounter] = useState([0, 0]);
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Total Recall {counter[0]} {counter[1]}</h1>
-                {/* <Sq1 setCounter={setCounter}/> */}
-                <LocalStorage />
+                <h1>Contex</h1>
+                <ContextAbc.Provider value={
+                    {
+                        text: 'ABC'
+                    }
+                    }>
+                    <A3 />
+                </ContextAbc.Provider>
             </header>
         </div>
     );
