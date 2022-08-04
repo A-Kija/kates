@@ -3,7 +3,7 @@ import './App.scss';
 import Create from './Components/Create';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { create, read } from './Functions/localStorage';
+import { create, destroy, read } from './Functions/localStorage';
 import DataContext from './Components/DataContext';
 import List from './Components/List';
 
@@ -14,6 +14,7 @@ function App() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [animals, setAnimals] = useState(null);
   const [createData, setCreateData] = useState(null);
+  const [deleteData, setDeleteData] = useState(null);
 
 
   useEffect(() => {
@@ -28,10 +29,19 @@ function App() {
     setLastUpdate(Date.now());
   }, [createData]);
 
+  useEffect(() => {
+    if (null === deleteData) {
+      return;
+    }
+    destroy(localStorageKey, deleteData.id);
+    setLastUpdate(Date.now());
+  }, [deleteData]);
+
   return (
     <DataContext.Provider value={{
       setCreateData,
-      animals
+      animals,
+      setDeleteData
     }}>
       <div className="container">
         <div className="row">
