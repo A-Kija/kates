@@ -6,9 +6,21 @@ function Create() {
 
     const [type, setType] = useState('');
     const [weight, setWeight] = useState('');
-    const { setCreateData } = useContext(DataContext);
+    const { setCreateData, msg } = useContext(DataContext);
 
     const clickAdd = () => {
+        let error = false;
+        if (type === '') {
+            msg('danger', 'Please enter animal type');
+            error = true;
+        }
+        if (weight === '') {
+            msg('danger', 'Please enter animal weight');
+            error = true;
+        }
+        if (error) {
+            return;
+        }
         setCreateData({type, weight});
         setType('');
         setWeight('');
