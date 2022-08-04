@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { create, destroy, read } from './Functions/localStorage';
 import DataContext from './Components/DataContext';
 import List from './Components/List';
+import Edit from './Components/Edit';
 
 const localStorageKey = 'zoo';
 
@@ -15,6 +16,7 @@ function App() {
   const [animals, setAnimals] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
+  const [modalData, setModalData] = useState(null);
 
 
   useEffect(() => {
@@ -41,7 +43,9 @@ function App() {
     <DataContext.Provider value={{
       setCreateData,
       animals,
-      setDeleteData
+      setDeleteData,
+      modalData, 
+      setModalData
     }}>
       <div className="container">
         <div className="row">
@@ -53,6 +57,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Edit/>
     </DataContext.Provider>
   );
 }
