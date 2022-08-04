@@ -13,29 +13,29 @@ function getId(key) {
 function getFromLocalStorage(key) {
     const data = localStorage.getItem(key);
     if (null === data) {
-        localStorage.setItem(key + '_id', JSON.stringify([]));
+        localStorage.setItem(key, JSON.stringify([]));
         return [];
     }
     return JSON.parse(data);
 }
 
-export function create(key, data) {
+export function create(key, newData) {
     const data = getFromLocalStorage(key);
-    const newData = {...data, id: getId(key) };
+    newData.id = getId(key);
     data.push(newData);
-    localStorage.setItem(key + '_id', JSON.stringify(data));
+    localStorage.setItem(key, JSON.stringify(data));
 }
 
 export function destroy(key, id) {
     const data = getFromLocalStorage(key);
-    localStorage.setItem(key + '_id', JSON.stringify(
+    localStorage.setItem(key, JSON.stringify(
         data.filter(d => d.id !== id)
     ));
 }
 
 export function edit(key, newData, id) {
     const data = getFromLocalStorage(key);
-    localStorage.setItem(key + '_id', JSON.stringify(
+    localStorage.setItem(key, JSON.stringify(
         data.map(d => d.id === id ? {...newData, id: id } : {...d })
     ));
 }
