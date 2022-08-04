@@ -3,27 +3,35 @@ import './App.scss';
 import Create from './Components/Create';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { create } from './Functions/localStorage';
+import { create, read } from './Functions/localStorage';
 import DataContext from './Components/DataContext';
+import List from './Components/List';
 
 const localStorageKey = 'zoo';
 
 function App() {
 
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
+  const [animals, setAnimals] = useState(null);
   const [createData, setCreateData] = useState(null);
 
 
+  useEffect(() => {
+    setAnimals(read(localStorageKey));
+  }, [lastUpdate])
 
   useEffect(() => {
     if (null === createData) {
       return;
     }
     create(localStorageKey, createData);
+    setLastUpdate(Date.now());
   }, [createData]);
 
   return (
     <DataContext.Provider value={{
-      setCreateData
+      setCreateData,
+      animals
     }}>
       <div className="container">
         <div className="row">
@@ -31,7 +39,7 @@ function App() {
             <Create />
           </div>
           <div className="col-7">
-            One of three columns
+            <List />
           </div>
         </div>
       </div>
