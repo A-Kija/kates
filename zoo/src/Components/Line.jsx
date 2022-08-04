@@ -3,10 +3,14 @@ import DataContext from "./DataContext";
 
 function Line({ animal }) {
 
-    const {setDeleteData} = useContext(DataContext);
+    const {setDeleteData, setModalData} = useContext(DataContext);
 
     const clickDelete = () => {
         setDeleteData({id: animal.id})
+    }
+
+    const clickEdit = () => {
+        setModalData(animal);
     }
 
     return (
@@ -17,7 +21,7 @@ function Line({ animal }) {
                     <i>{animal.weight} Kg</i>
                 </div>
                 <div className="control">
-                    <button type="button" className="btn btn-outline-success m-1">Edit</button>
+                    <button type="button" onClick={clickEdit} className="btn btn-outline-success m-1">Edit</button>
                     <button type="button" onClick={clickDelete} className="btn btn-outline-danger m-1">Delete</button>
                 </div>
             </div>

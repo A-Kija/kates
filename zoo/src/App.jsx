@@ -3,7 +3,7 @@ import './App.scss';
 import Create from './Components/Create';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { create, destroy, read } from './Functions/localStorage';
+import { create, destroy, edit, read } from './Functions/localStorage';
 import DataContext from './Components/DataContext';
 import List from './Components/List';
 import Edit from './Components/Edit';
@@ -16,6 +16,7 @@ function App() {
   const [animals, setAnimals] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
+  const [EditData, setEditData] = useState(null);
   const [modalData, setModalData] = useState(null);
 
 
@@ -39,13 +40,22 @@ function App() {
     setLastUpdate(Date.now());
   }, [deleteData]);
 
+  useEffect(() => {
+    if (null === EditData) {
+      return;
+    }
+    edit(localStorageKey, EditData, EditData.id);
+    setLastUpdate(Date.now());
+  }, [EditData]);
+
   return (
     <DataContext.Provider value={{
       setCreateData,
       animals,
       setDeleteData,
       modalData, 
-      setModalData
+      setModalData,
+      setEditData
     }}>
       <div className="container">
         <div className="row">
