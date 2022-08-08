@@ -1,5 +1,6 @@
 import './App.scss';
-import Users from './Components/017/Users';
+import Posts from './Components/017/Posts';
+// import Users from './Components/017/Users';
 function App() {
 
 
@@ -7,7 +8,8 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1>Api</h1>
-                <Users/>
+                {/* <Users/> */}
+                <Posts/>
             </header>
         </div>
     );
