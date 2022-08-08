@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from 'axios';
 
-const perPage = 30;
+const perPage = 15;
 
 function Posts() {
 
@@ -11,23 +11,43 @@ function Posts() {
 
     const [pages, setPages] = useState(0);
 
+    const [pageNow, setPageNow] = useState(1);
+
+
+
     useEffect(() => {
+        const doShowIndex = i => {
+            return (((pageNow - 1) * perPage) <= i && ((pageNow) * perPage) > i);
+        }
         axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then(res => setPosts(res.data));
+            .then(res => {
+                setPosts(res.data.map((p, i) => ({ ...p, show: doShowIndex(i) })))
+            });
     }, []);
 
     useEffect(() => {
-        if (null === posts) {
+        const doShowIndex = i => {
+            return (((pageNow - 1) * perPage) <= i && ((pageNow) * perPage) > i);
+        }
+        // if (null === posts) {
+        //     return;
+        // }
+        setPosts(po => po?.map((p, i) => ({ ...p, show: doShowIndex(i) })));
+
+    }, [pageNow]);
+
+    useEffect(() => {
+        if (null === posts || 'undefined' === typeof posts) {
             return;
         }
         setPages(Math.ceil(posts.length / perPage));
     }, [posts]);
-    
-   
+
+
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/users')
-        .then(res => setUsers(res.data));
+            .then(res => setUsers(res.data));
     }, []);
 
     const sortTitle = () => {
@@ -39,19 +59,22 @@ function Posts() {
     return (
         <>
             <div className="container">
-            <select>
-                {
-                    [...Array(pages)].map((_, i) => <option key={i}>{i + 1} Page</option>)
-                }
-            </select>
+                <select value={pageNow} onChange={e => setPageNow(parseInt(e.target.value))}>
+                    {
+                        [...Array(pages)].map((_, i) => <option key={i} value={i + 1}>{i + 1} Page</option>)
+                    }
+                </select>
             </div>
             <ul>
                 {
-                    posts ? posts.map(p => (<li className="users-list" key={p.id}>
-                        <b>{p.title}</b>
-                        <i>{users ? users.find(u => p.userId === u.id)?.name : '---loading---'}</i>
-                        </li>))
-                     : <li className="loader"></li>
+                    posts ? posts.map(p => 
+                        p.show ? (<li className="users-list" key={p.id}>
+                            <b>ID:{p.id} {p.title}</b>
+                            <i>{users ? users.find(u => p.userId === u.id)?.name : '---loading---'}</i>
+                        </li>) : null
+                    
+                    )
+                        : <li className="loader"></li>
                 }
             </ul>
             <button onClick={sortTitle}>Sort Title</button>
