@@ -608,3 +608,16 @@ h1.red {
         transform: rotate(0deg);
     }
 }
+
+ul {
+    padding: 0;
+    width: 90%;
+}
+
+.users-list {
+    width: 100%;
+    list-style: none;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
