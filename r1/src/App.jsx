@@ -1,20 +1,13 @@
 import './App.scss';
-import A3 from './Components/016/A3';
-import ContextAbc from './Components/016/ContextAbc';
+import Users from './Components/017/Users';
 function App() {
 
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Contex</h1>
-                <ContextAbc.Provider value={
-                    {
-                        text: 'ABC'
-                    }
-                    }>
-                    <A3 />
-                </ContextAbc.Provider>
+                <h1>Api</h1>
+                <Users/>
             </header>
         </div>
     );
