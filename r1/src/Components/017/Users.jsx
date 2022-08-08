@@ -19,9 +19,8 @@ function Users() {
         <>
             <ul>
                 {
-                    users?.map(u => <li key={u.id}>{u.name}</li>)
+                    users ? users.map(u => <li key={u.id}>{u.name}</li>) : <li className="loader"></li>
                 }
-
             </ul>
         </>
     )
