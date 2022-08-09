@@ -19,11 +19,24 @@ function Books() {
     }, []);
 
     return (
+        <>
+        { types ?
+        <div class="container">
+            <select>
+                <option value="0">Visos</option>
+                {
+                    types?.map(t => <option key={t.id} value={t.id}>{t.title}</option>)
+                }
+            </select>
+        </div> : null
+        }
+
         <ul className="books-list">
             {
                 books ? books.map(b => <Book key={b.id} book={b} cat={types?.find(t => t.id === b.id).title ?? '...loading'} />) : <li className="loader"></li>
             }
         </ul>
+        </>
     )
 
 }
