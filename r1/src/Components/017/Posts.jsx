@@ -8,16 +8,12 @@ function Posts() {
 
     const [posts, setPosts] = useState(null);
     const [users, setUsers] = useState(null);
-
     const [pages, setPages] = useState(0);
-
     const [pageNow, setPageNow] = useState(1);
-
-
 
     useEffect(() => {
         const doShowIndex = i => {
-            return (((pageNow - 1) * perPage) <= i && ((pageNow) * perPage) > i);
+            return (0 <= i && perPage > i);
         }
         axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(res => {
@@ -29,9 +25,6 @@ function Posts() {
         const doShowIndex = i => {
             return (((pageNow - 1) * perPage) <= i && ((pageNow) * perPage) > i);
         }
-        // if (null === posts) {
-        //     return;
-        // }
         setPosts(po => po?.map((p, i) => ({ ...p, show: doShowIndex(i) })));
 
     }, [pageNow]);
@@ -43,8 +36,6 @@ function Posts() {
         setPages(Math.ceil(posts.length / perPage));
     }, [posts]);
 
-
-
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(res => setUsers(res.data));
@@ -53,8 +44,6 @@ function Posts() {
     const sortTitle = () => {
         setPosts(p => [...p].sort((a, b) => b.title.length - a.title.length))
     }
-
-
 
     return (
         <>
@@ -79,9 +68,7 @@ function Posts() {
             </ul>
             <button onClick={sortTitle}>Sort Title</button>
         </>
-    )
-
-
+    );
 }
 
 export default Posts;
