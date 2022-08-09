@@ -621,3 +621,31 @@ ul {
     display: flex;
     justify-content: space-between;
 }
+
+.books-list {
+    width: 100%;
+    list-style: none;
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    li.li-book {
+        width: 300px;
+        height: 400px;
+        padding: 10px;
+        margin: 10px;
+        h2 {
+            font-size: 20px;
+            height: 50px;
+            overflow: hidden;
+            text-align: center;
+            line-height: 24px;
+        }
+        .price {
+            color: orangered;
+            font-weight: bold;
+            // text-align: right;
+        }
+    }
+}

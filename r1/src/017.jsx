@@ -1,12 +1,12 @@
 import './App.scss';
-import Books from './Components/018/Books';
+import Posts from './Components/017/Posts';
 function App() {
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Knygynas</h1>
-                <Books/>
+                <h1>Api</h1>
+                <Posts/>
             </header>
         </div>
     );
