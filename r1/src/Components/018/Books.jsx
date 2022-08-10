@@ -61,6 +61,10 @@ function Books() {
         });
     }
 
+    const removeItem = id => {
+        setCart(c => c.filter(item => item.id !== id));
+    }
+
     return (
         <BooksContext.Provider value={{
             addToCart
@@ -76,6 +80,7 @@ function Books() {
                             cart.map((b, i) => <div key={i}>
                                 {books?.find(bo => bo.id === b.id).title}
                                 <i>{b.count}</i>
+                                <b onClick={() => removeItem(b.id)}>X</b>
                             </div>)
                         }
                     </div>

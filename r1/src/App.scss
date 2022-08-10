@@ -715,9 +715,24 @@ ul {
                 position: relative;
                 i {
                     position: absolute;
-                    top: 15px;
+                    top: 5px;
                     right: 8px;
                     font-weight: bold;
+                }
+                b {
+                    position: absolute;
+                    bottom: 5px;
+                    right: 8px;
+                    color: orange;
+                    display: block;
+                    width: 17px;
+                    height: 17px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    border: 1px solid orange;
+                    cursor: pointer;
                 }
             }
         }
