@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Book from './Book';
 import randColor from '../../Functions/randColor';
+import BooksContext from './BooksContext';
 
 function Books() {
 
@@ -9,6 +10,7 @@ function Books() {
     const [types, setTypes] = useState(null);
     const [cat, setCat] = useState(0);
     const [sort, setSort] = useState(0);
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         axios.get('https://in3.dev/knygos/')
@@ -49,20 +51,23 @@ function Books() {
     }, [sort]);
 
     return (
-        <>
-        
-        <div className="cart">
-        <span>5</span>
-        <svg>
-            <use href="#cart"></use>
-        </svg>
-        <div className="cart-list">
-            <div>knyga</div>
-            <div> dar knyga knyga</div>
-            <div>dar viena knyga knyga</div>
-        </div>
+        <BooksContext.Provider value={{
+            setCart
+        }}>
+            <div className="cart-bin">
+                <div className="cart">
+                    <span>{cart.length}</span>
+                    <svg>
+                        <use href="#cart"></use>
+                    </svg>
+                    <div className="cart-list">
+                        {
+                            cart.map((b, i) => <div key={i}>{books?.find(bo => bo.id === b.id).title}</div>)
+                        }
+                    </div>
 
-        </div>
+                </div>
+            </div>
             {types ?
                 <div className="container">
                     <select value={cat} onChange={e => setCat(parseInt(e.target.value))}>
@@ -91,7 +96,7 @@ function Books() {
                     ) : <li className="loader"></li>
                 }
             </ul>
-        </>
+        </BooksContext.Provider>
     )
 
 }

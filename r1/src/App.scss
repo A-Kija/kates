@@ -677,34 +677,44 @@ ul {
     }
 }
 
-.cart {
-    position: relative;
-    svg {
-        fill: orange;
-        width: 40px;
-        height: 40px;
-    }
-    span {
-        position: absolute;
-        font-size: 16px;
-        color: orange;
-        top: -13px;
-        left: 13px;
-    }
-    .cart-list {
-        display: none;
-        position: absolute;
-        width: 180px;
-        z-index: 20;
-        div {
-            font-size: 20px;
-            background-color: #ffffff;
-            color: black;
-            padding: 5px 10px;
-            border-bottom: 1px solid orange;
+.cart-bin {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .cart {
+        position: relative;
+        margin-right: 180px;
+        svg {
+            fill: orange;
+            width: 40px;
+            height: 40px;
         }
-    }
-    &:hover .cart-list {
-        display: block;
+        span {
+            position: absolute;
+            font-size: 16px;
+            color: orange;
+            top: -13px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        .cart-list {
+            display: none;
+            position: absolute;
+            width: 180px;
+            z-index: 20;
+            div {
+                font-size: 20px;
+                background-color: #ffffff;
+                color: black;
+                padding: 5px 10px;
+                border-bottom: 1px solid orange;
+                height: 50px;
+                overflow: hidden;
+            }
+        }
+        &:hover .cart-list {
+            display: block;
+        }
     }
 }
