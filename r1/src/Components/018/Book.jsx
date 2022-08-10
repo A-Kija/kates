@@ -1,10 +1,19 @@
-import { useContext } from "react";
-import BooksContext from "./BooksContext";
+import { useContext, useState } from 'react';
+import BooksContext from './BooksContext';
 
 
 function Book({ book, cat }) {
 
     const { addToCart } = useContext(BooksContext);
+    const [count, setCount] = useState(1);
+
+    const goUp = () => {
+        setCount(c => c + 1);
+    }
+
+    const goDown = () => {
+        setCount(c => Math.max(1, c - 1));
+    }
 
     return (
         <li className="li-book" style={{ backgroundColor: book.color + '40' }}>
@@ -15,11 +24,11 @@ function Book({ book, cat }) {
             <div className="bottom">
                 <button className="red" onClick={() => addToCart(book.id)}>Pirkti</button>
                 <div className="counter">
-                    <svg className="up">
+                    <svg className="up" onClick={goUp}>
                         <use href="#arrow"></use>
                     </svg>
-                    <span>2</span>
-                    <svg className="down">
+                    <span>{count}</span>
+                    <svg className="down" onClick={goDown}>
                         <use href="#arrow"></use>
                     </svg>
                 </div>
