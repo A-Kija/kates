@@ -54,6 +54,11 @@ function Books() {
         <svg>
             <use href="#cart"></use>
         </svg>
+        <span>5</span>
+        <div>knyga</div>
+        <div> dar knyga knyga</div>
+        <div>dar viena knyga knyga</div>
+
         </div>
             {types ?
                 <div className="container">

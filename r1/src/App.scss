@@ -678,9 +678,25 @@ ul {
 }
 
 .cart {
+    position: relative;
     svg {
         fill: orange;
         width: 40px;
         height: 40px;
+    }
+    span {
+        position: absolute;
+        font-size: 16px;
+        color: orange;
+        top: -13px;
+        left: 13px;
+    }
+    div {
+        font-size: 20px;
+        background-color: #ffffffcc;
+        color: black;
+        padding: 5px 10px;
+        max-width: 180px;
+        border-bottom: 1px solid orange;
     }
 }
