@@ -50,14 +50,17 @@ function Books() {
 
     return (
         <>
+        
         <div className="cart">
+        <span>5</span>
         <svg>
             <use href="#cart"></use>
         </svg>
-        <span>5</span>
-        <div>knyga</div>
-        <div> dar knyga knyga</div>
-        <div>dar viena knyga knyga</div>
+        <div className="cart-list">
+            <div>knyga</div>
+            <div> dar knyga knyga</div>
+            <div>dar viena knyga knyga</div>
+        </div>
 
         </div>
             {types ?

@@ -691,12 +691,20 @@ ul {
         top: -13px;
         left: 13px;
     }
-    div {
-        font-size: 20px;
-        background-color: #ffffffcc;
-        color: black;
-        padding: 5px 10px;
-        max-width: 180px;
-        border-bottom: 1px solid orange;
+    .cart-list {
+        display: none;
+        position: absolute;
+        width: 180px;
+        z-index: 20;
+        div {
+            font-size: 20px;
+            background-color: #ffffff;
+            color: black;
+            padding: 5px 10px;
+            border-bottom: 1px solid orange;
+        }
+    }
+    &:hover .cart-list {
+        display: block;
     }
 }
