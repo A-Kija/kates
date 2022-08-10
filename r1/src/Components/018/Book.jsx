@@ -4,7 +4,7 @@ import BooksContext from "./BooksContext";
 
 function Book({ book, cat }) {
 
-    const { setCart } = useContext(BooksContext);
+    const { addToCart } = useContext(BooksContext);
 
     return (
         <li className="li-book" style={{ backgroundColor: book.color + '40' }}>
@@ -13,7 +13,7 @@ function Book({ book, cat }) {
             <img src={book.img} alt={book.title} />
             <div className="author">{book.author}</div>
             <div className="bottom">
-                <button className="red" onClick={() => setCart(c => [...c, {id:book.id}])}>Pirkti</button>
+                <button className="red" onClick={() => addToCart(book.id)}>Pirkti</button>
                 <div className="price">{book.price} EUR</div>
             </div>
         </li>

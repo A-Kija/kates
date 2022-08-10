@@ -50,9 +50,20 @@ function Books() {
         }
     }, [sort]);
 
+    const addToCart = id => {
+
+        setCart(c => {
+            const inCart = c.find(b => b.id === id);
+            if (!inCart) {
+                return [...c, {id, count: 1}]
+            }
+            return c.map(b => b.id === id ? {...b, count: b.count + 1} : {...b});
+        });
+    }
+
     return (
         <BooksContext.Provider value={{
-            setCart
+            addToCart
         }}>
             <div className="cart-bin">
                 <div className="cart">
@@ -62,7 +73,10 @@ function Books() {
                     </svg>
                     <div className="cart-list">
                         {
-                            cart.map((b, i) => <div key={i}>{books?.find(bo => bo.id === b.id).title}</div>)
+                            cart.map((b, i) => <div key={i}>
+                                {books?.find(bo => bo.id === b.id).title}
+                                <i>{b.count}</i>
+                            </div>)
                         }
                     </div>
 
