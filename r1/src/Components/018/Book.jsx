@@ -7,6 +7,11 @@ function Book({ book, cat }) {
     const { addToCart } = useContext(BooksContext);
     const [count, setCount] = useState(1);
 
+    const addToCartLocal = (id, c) => {
+        setCount(1);
+        addToCart(id, c);
+    }
+
     const goUp = () => {
         setCount(c => c + 1);
     }
@@ -22,7 +27,7 @@ function Book({ book, cat }) {
             <img src={book.img} alt={book.title} />
             <div className="author">{book.author}</div>
             <div className="bottom">
-                <button className="red" onClick={() => addToCart(book.id)}>Pirkti</button>
+                <button className="red" onClick={() => addToCartLocal(book.id, count)}>Pirkti</button>
                 <div className="counter">
                     <svg className="up" onClick={goUp}>
                         <use href="#arrow"></use>

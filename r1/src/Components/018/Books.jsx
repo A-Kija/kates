@@ -50,14 +50,14 @@ function Books() {
         }
     }, [sort]);
 
-    const addToCart = id => {
+    const addToCart = (id, count) => {
 
         setCart(c => {
             const inCart = c.find(b => b.id === id);
             if (!inCart) {
-                return [...c, {id, count: 1}]
+                return [...c, {id, count: count}]
             }
-            return c.map(b => b.id === id ? {...b, count: b.count + 1} : {...b});
+            return c.map(b => b.id === id ? {...b, count: b.count + count} : {...b});
         });
     }
 
