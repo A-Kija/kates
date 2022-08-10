@@ -14,6 +14,15 @@ function Book({ book, cat }) {
             <div className="author">{book.author}</div>
             <div className="bottom">
                 <button className="red" onClick={() => addToCart(book.id)}>Pirkti</button>
+                <div className="counter">
+                    <svg className="up">
+                        <use href="#arrow"></use>
+                    </svg>
+                    <span>2</span>
+                    <svg className="down">
+                        <use href="#arrow"></use>
+                    </svg>
+                </div>
                 <div className="price">{book.price} EUR</div>
             </div>
         </li>

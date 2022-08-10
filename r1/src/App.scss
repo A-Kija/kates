@@ -726,3 +726,23 @@ ul {
         }
     }
 }
+
+.counter {
+    display: flex;
+    flex-direction: column;
+    svg {
+        fill: orange;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        &.down {
+            transform: rotate(180deg);
+        }
+    }
+    span {
+        color: orange;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 24px;
+    }
+}
