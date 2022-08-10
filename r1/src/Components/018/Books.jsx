@@ -50,6 +50,11 @@ function Books() {
 
     return (
         <>
+        <div className="cart">
+        <svg>
+            <use href="#cart"></use>
+        </svg>
+        </div>
             {types ?
                 <div className="container">
                     <select value={cat} onChange={e => setCat(parseInt(e.target.value))}>
