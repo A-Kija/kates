@@ -1,12 +1,39 @@
+import { useReducer } from 'react';
 import './App.scss';
-import Books from './Components/018/Books';
+import count from './Reducers/count';
 function App() {
+
+    const [number, dispachNumber] = useReducer(count, 0);
+
+    const add1 = () => {
+        const action = {
+            type: 'plus_one'
+        }
+        dispachNumber(action);
+    }
+
+    const rem1 = () => {
+        const action = {
+            type: 'minus_one'
+        }
+        dispachNumber(action);
+    }
+
+    const do0 = () => {
+        const action = {
+            type: 'reset'
+        }
+        dispachNumber(action);
+    }
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Knygynas</h1>
-                <Books/>
+                <h1>useReducer</h1>
+                <h2>Number now is: {number}</h2>
+                <button onClick={add1}>+1</button>
+                <button onClick={rem1}>-1</button>
+                <button onClick={do0}>0</button>
             </header>
         </div>
     );
