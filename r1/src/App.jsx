@@ -8,6 +8,7 @@ function App() {
     const [number, dispachNumber] = useReducer(count, 0);
     const [numberVal, setNumberVal] = useState('');
     const [sq, dispachSq] = useReducer(square, []);
+    const [sqVal, setSqVal] = useState('');
 
     const add1 = () => {
         const action = {
@@ -48,8 +49,10 @@ function App() {
 
     const addSq = () => {
         const action = {
-            type: 'add'
+            type: 'add',
+            payload: sqVal
         }
+        setSqVal('');
         dispachSq(action);
     }
 
@@ -76,17 +79,18 @@ function App() {
                     <button onClick={add1}>+1</button>
                     <button onClick={rem1}>-1</button>
                     <button onClick={do0}>0</button>
-                    <input className="cinput" type="text" value={numberVal} onChange={e => setNumberVal(e.target.value.length <= 2 ? e.target.value : numberVal)}/>
+                    <input className="cinput" type="text" value={numberVal} onChange={e => setNumberVal(e.target.value.length <= 2 ? e.target.value : numberVal)} />
                     <button onClick={addSome}>+?</button>
                     <button onClick={remSome}>-?</button>
                 </div>
                 <div className="container">
                     {
-                        sq.map((_, i) => <div key={i} className="sc"></div>)
+                        sq.map((s, i) => <div key={i} className="sc">{s}</div>)
                     }
                 </div>
                 <div className="container">
-                <button onClick={addSq}>+[]</button>
+                    <button onClick={addSq}>+[]</button>
+                    <input className="cinput" type="text" value={sqVal} onChange={e => setSqVal(e.target.value.length <= 2 ? e.target.value : sqVal)} />
                     <button onClick={remSq}>-[]</button>
                     <button onClick={doEmpty}>[]</button>
                 </div>
