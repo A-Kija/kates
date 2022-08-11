@@ -70,6 +70,41 @@ function App() {
         dispachSq(action);
     }
 
+    const sortUp = () => {
+        const action = {
+            type: 'up'
+        }
+        dispachSq(action);
+    }
+
+    const sortDown = () => {
+        const action = {
+            type: 'down'
+        }
+        dispachSq(action);
+    }
+
+    const f1 = () => {
+        const action = {
+            type: 'f1'
+        }
+        dispachSq(action);
+    }
+
+    const f2 = () => {
+        const action = {
+            type: 'f2'
+        }
+        dispachSq(action);
+    }
+
+    const fAll = () => {
+        const action = {
+            type: 'f_all'
+        }
+        dispachSq(action);
+    }
+
     return (
         <div className="App">
             <header className="App-header">
@@ -85,7 +120,7 @@ function App() {
                 </div>
                 <div className="container">
                     {
-                        sq.map((s, i) => <div key={i} className="sc">{s}</div>)
+                        sq.map((s, i) => s.show ? <div key={i} className="sc">{s.number}</div> : null)
                     }
                 </div>
                 <div className="container">
@@ -93,6 +128,11 @@ function App() {
                     <input className="cinput" type="text" value={sqVal} onChange={e => setSqVal(e.target.value.length <= 2 ? e.target.value : sqVal)} />
                     <button onClick={remSq}>-[]</button>
                     <button onClick={doEmpty}>[]</button>
+                    <button onClick={sortUp}>UP</button>
+                    <button onClick={sortDown}>DOWN</button>
+                    <button onClick={f1}>*</button>
+                    <button onClick={f2}>**</button>
+                    <button onClick={fAll}>ALL</button>
                 </div>
             </header>
         </div>
