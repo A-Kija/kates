@@ -12,6 +12,14 @@ function count(state, action) {
         case 'reset':
             stateCopy = 0;
             break;
+        case 'add_some':
+            action.payload = action.payload === '' ? 0 : parseInt(action.payload);
+            stateCopy = stateCopy + action.payload;
+            break;
+        case 'rem_some':
+            action.payload = action.payload === '' ? 0 : parseInt(action.payload);
+            stateCopy = stateCopy - action.payload;
+            break;
         default:
     }
 
