@@ -31,9 +31,11 @@ function App() {
             <header className="App-header">
                 <h1>useReducer</h1>
                 <h2>Number now is: {number}</h2>
-                <button onClick={add1}>+1</button>
-                <button onClick={rem1}>-1</button>
-                <button onClick={do0}>0</button>
+                <div className="container">
+                    <button onClick={add1}>+1</button>
+                    <button onClick={rem1}>-1</button>
+                    <button onClick={do0}>0</button>
+                </div>
             </header>
         </div>
     );
