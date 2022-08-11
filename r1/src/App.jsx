@@ -1,9 +1,11 @@
 import { useReducer } from 'react';
 import './App.scss';
 import count from './Reducers/count';
+import square from './Reducers/square';
 function App() {
 
     const [number, dispachNumber] = useReducer(count, 0);
+    const [sq, dispachSq] = useReducer(square, []);
 
     const add1 = () => {
         const action = {
@@ -26,6 +28,27 @@ function App() {
         dispachNumber(action);
     }
 
+    const addSq = () => {
+        const action = {
+            type: 'add'
+        }
+        dispachSq(action);
+    }
+
+    const remSq = () => {
+        const action = {
+            type: 'rem'
+        }
+        dispachSq(action);
+    }
+
+    const doEmpty = () => {
+        const action = {
+            type: 'clear'
+        }
+        dispachSq(action);
+    }
+
     return (
         <div className="App">
             <header className="App-header">
@@ -35,6 +58,16 @@ function App() {
                     <button onClick={add1}>+1</button>
                     <button onClick={rem1}>-1</button>
                     <button onClick={do0}>0</button>
+                </div>
+                <div className="container">
+                    {
+                        sq.map((_, i) => <div key={i} className="sc"></div>)
+                    }
+                </div>
+                <div className="container">
+                <button onClick={addSq}>+[]</button>
+                    <button onClick={remSq}>-[]</button>
+                    <button onClick={doEmpty}>[]</button>
                 </div>
             </header>
         </div>
