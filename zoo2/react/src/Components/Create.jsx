@@ -46,7 +46,7 @@ function Create() {
                 </div>
                 <button type="button" ref={btn} onClick={clickAdd} className="btn btn-outline-info m-3" disabled={createDisabled}>
                 {
-                    createDisabled ? <span className="spinner-border spinner-border-sm" role="status"></span> : <span>Loading...</span>
+                    createDisabled ? <><span className="spinner-border spinner-border-sm" role="status"></span><span> Loading...</span></> : <span>Add</span>
                 }
                 </button>
             </div>

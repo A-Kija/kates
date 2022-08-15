@@ -25,7 +25,7 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   // Loaders and Disablers
-  const [createDisabled, setCreateDisabled] = useState(true);
+  const [createDisabled, setCreateDisabled] = useState(false);
 
   // READ
   useEffect(() => {
@@ -38,10 +38,12 @@ function App() {
     if (null === createData) {
       return;
     }
+    setCreateDisabled(true);
     axios.post('http://localhost:3003/list', createData)
       .then(res => {
         setLastUpdate(Date.now());
         msg(...res.data.msg);
+        setCreateDisabled(false);
       })
 
   }, [createData]);
