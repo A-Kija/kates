@@ -24,30 +24,38 @@ function App() {
 
   const [messages, setMessages] = useState([]);
 
-
+  // READ
   useEffect(() => {
     axios.get('http://localhost:3003/list')
     .then(res => setAnimals(res.data));
-  }, [lastUpdate])
+  }, [lastUpdate]);
 
+  // CREATE
   useEffect(() => {
     if (null === createData) {
       return;
     }
-    create(localStorageKey, createData);
-    setLastUpdate(Date.now());
-    msg('success', 'All good!');
+    axios.post('http://localhost:3003/list', createData)
+    .then(res => {
+      setLastUpdate(Date.now());
+      msg(...res.data.msg);
+    })
+
   }, [createData]);
 
+  // DELETE
   useEffect(() => {
     if (null === deleteData) {
       return;
     }
-    destroy(localStorageKey, deleteData.id);
-    setLastUpdate(Date.now());
-    msg('info', 'Animal gone!');
+    axios.delete('http://localhost:3003/list/' + deleteData.id)
+    .then(res => {
+      setLastUpdate(Date.now());
+      msg(...res.data.msg);
+    });
   }, [deleteData]);
 
+  // EDIT
   useEffect(() => {
     if (null === EditData) {
       return;
@@ -56,6 +64,8 @@ function App() {
     setLastUpdate(Date.now());
     msg('info', 'Animal was edited!');
   }, [EditData]);
+
+
 
   const msg = (type, text) => {
     const mes = {type, text, id: rand(1000000, 9999999)}
