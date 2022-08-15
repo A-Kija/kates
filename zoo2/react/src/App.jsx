@@ -105,7 +105,8 @@ function App() {
       msg,
       createDisabled,
       listDisabled,
-      setSort
+      setSort,
+      sort
     }}>
       <div className="container">
         <div className="row">

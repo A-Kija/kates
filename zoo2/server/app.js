@@ -36,6 +36,7 @@ app.get('/list', (req, res) => {
         SELECT
         id, animal AS type, weight
         FROM animals
+        ORDER BY id DESC
       `;
     } else if (req.query.sort == 'az') {
         sql = `

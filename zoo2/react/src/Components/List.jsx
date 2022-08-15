@@ -4,17 +4,17 @@ import Line from "./Line";
 
 function List() {
 
-    const { animals, listDisabled, setSort } = useContext(DataContext);
+    const { animals, listDisabled, setSort, sort } = useContext(DataContext);
 
 
     return (
         <div className="card m-2">
             <div className="card-header">
                 <h2>List</h2>
-                <button type="button" onClick={() => setSort('az')} className="btn btn-outline-secondary">Name AZ</button>
-                <button type="button" onClick={() => setSort('za')} className="btn btn-outline-secondary">Name ZA</button>
-                <button type="button" onClick={() => setSort('09')} className="btn btn-outline-secondary">Weight min/max</button>
-                <button type="button" onClick={() => setSort('90')} className="btn btn-outline-secondary">Weight max/min</button>
+                <button type="button" onClick={() => setSort('az')} className={'btn btn-outline-' + (sort === 'az' ? 'info' : 'secondary')}>Name AZ</button>
+                <button type="button" onClick={() => setSort('za')} className={'btn btn-outline-' + (sort === 'za' ? 'info' : 'secondary')}>Name ZA</button>
+                <button type="button" onClick={() => setSort('09')} className={'btn btn-outline-' + (sort === '09' ? 'info' : 'secondary')}>Weight min/max</button>
+                <button type="button" onClick={() => setSort('90')} className={'btn btn-outline-' + (sort === '90' ? 'info' : 'secondary')}>Weight max/min</button>
             </div>
             <div className="card-body">
                 <ul className="list-group">
