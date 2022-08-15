@@ -50,6 +50,18 @@ app.post('/list/', (req, res) => {
     });
 });
 
+app.put('/list/:animalId', (req, res) => {
+    const sql = `
+    UPDATE animals
+    SET animal = ?, weight = ?
+    WHERE id = ?
+  `;
+    con.query(sql, [req.body.type, req.body.weight, req.params.animalId], (err, result) => {
+        if (err) throw err;
+        res.send({msg: ['success', 'Animal was edited.']});
+    });
+});
+
 
 
 app.listen(port, () => {

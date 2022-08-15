@@ -19,7 +19,7 @@ function App() {
   const [animals, setAnimals] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
-  const [EditData, setEditData] = useState(null);
+  const [editData, setEditData] = useState(null);
   const [modalData, setModalData] = useState(null);
 
   const [messages, setMessages] = useState([]);
@@ -27,7 +27,7 @@ function App() {
   // READ
   useEffect(() => {
     axios.get('http://localhost:3003/list')
-    .then(res => setAnimals(res.data));
+      .then(res => setAnimals(res.data));
   }, [lastUpdate]);
 
   // CREATE
@@ -36,10 +36,10 @@ function App() {
       return;
     }
     axios.post('http://localhost:3003/list', createData)
-    .then(res => {
-      setLastUpdate(Date.now());
-      msg(...res.data.msg);
-    })
+      .then(res => {
+        setLastUpdate(Date.now());
+        msg(...res.data.msg);
+      })
 
   }, [createData]);
 
@@ -49,26 +49,29 @@ function App() {
       return;
     }
     axios.delete('http://localhost:3003/list/' + deleteData.id)
-    .then(res => {
-      setLastUpdate(Date.now());
-      msg(...res.data.msg);
-    });
+      .then(res => {
+        setLastUpdate(Date.now());
+        msg(...res.data.msg);
+      });
   }, [deleteData]);
 
   // EDIT
   useEffect(() => {
-    if (null === EditData) {
+    if (null === editData) {
       return;
     }
-    edit(localStorageKey, EditData, EditData.id);
-    setLastUpdate(Date.now());
-    msg('info', 'Animal was edited!');
-  }, [EditData]);
+    axios.put('http://localhost:3003/list/' + editData.id, editData)
+      .then(res => {
+        setLastUpdate(Date.now());
+        msg(...res.data.msg);
+      });
+
+  }, [editData]);
 
 
 
   const msg = (type, text) => {
-    const mes = {type, text, id: rand(1000000, 9999999)}
+    const mes = { type, text, id: rand(1000000, 9999999) }
     setTimeout(() => {
       setMessages(m => m.filter(me => me.id !== mes.id))
     }, 4000);
@@ -80,7 +83,7 @@ function App() {
       setCreateData,
       animals,
       setDeleteData,
-      modalData, 
+      modalData,
       setModalData,
       setEditData,
       messages,
@@ -96,8 +99,8 @@ function App() {
           </div>
         </div>
       </div>
-      <Edit/>
-      <Messages/>
+      <Edit />
+      <Messages />
     </DataContext.Provider>
   );
 }
