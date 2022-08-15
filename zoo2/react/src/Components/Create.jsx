@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { useState } from "react";
-import DataContext from "./DataContext";
+import { useState, useContext, useRef } from 'react';
+import DataContext from './DataContext';
 
 function Create() {
 
     const [type, setType] = useState('');
     const [weight, setWeight] = useState('');
-    const { setCreateData, msg } = useContext(DataContext);
+    const { setCreateData, msg, createDisabled } = useContext(DataContext);
+    const btn = useRef();
 
     const clickAdd = () => {
         let error = false;
@@ -19,11 +19,13 @@ function Create() {
             error = true;
         }
         if (error) {
+            btn.current.blur();
             return;
         }
         setCreateData({type, weight});
         setType('');
         setWeight('');
+        btn.current.blur();
     }
 
     return (
@@ -42,7 +44,11 @@ function Create() {
                     <input type="text" className="form-control" value={weight} onChange={e => setWeight(e.target.value)} />
                     <small className="form-text text-muted">How is big and fat your animal?</small>
                 </div>
-                <button type="button" onClick={clickAdd} className="btn btn-outline-info m-3">Add</button>
+                <button type="button" ref={btn} onClick={clickAdd} className="btn btn-outline-info m-3" disabled={createDisabled}>
+                {
+                    createDisabled ? <span className="spinner-border spinner-border-sm" role="status"></span> : <span>Loading...</span>
+                }
+                </button>
             </div>
         </div>
     );

@@ -24,6 +24,9 @@ function App() {
 
   const [messages, setMessages] = useState([]);
 
+  // Loaders and Disablers
+  const [createDisabled, setCreateDisabled] = useState(true);
+
   // READ
   useEffect(() => {
     axios.get('http://localhost:3003/list')
@@ -87,7 +90,8 @@ function App() {
       setModalData,
       setEditData,
       messages,
-      msg
+      msg,
+      createDisabled
     }}>
       <div className="container">
         <div className="row">
