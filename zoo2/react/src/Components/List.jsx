@@ -4,7 +4,7 @@ import Line from "./Line";
 
 function List() {
 
-    const { animals } = useContext(DataContext);
+    const { animals, listDisabled } = useContext(DataContext);
 
 
     return (
@@ -19,6 +19,17 @@ function List() {
                     }
 
                 </ul>
+                {
+                    listDisabled ?
+                        <div className="loader-screen">
+                            <div className="spinner-border" style={{
+                                width: '4rem',
+                                height: '4rem'
+                            }} role="status">
+                            </div>
+                        </div> :
+                        null
+                }
             </div>
         </div>
     );

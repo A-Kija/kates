@@ -26,11 +26,16 @@ function App() {
 
   // Loaders and Disablers
   const [createDisabled, setCreateDisabled] = useState(false);
+  const [listDisabled, setListDisabled] = useState(false);
 
   // READ
   useEffect(() => {
+    setListDisabled(true);
     axios.get('http://localhost:3003/list')
-      .then(res => setAnimals(res.data));
+      .then(res => {
+        setAnimals(res.data);
+        setListDisabled(false);
+      });
   }, [lastUpdate]);
 
   // CREATE
@@ -53,6 +58,7 @@ function App() {
     if (null === deleteData) {
       return;
     }
+    setListDisabled(true);
     axios.delete('http://localhost:3003/list/' + deleteData.id)
       .then(res => {
         setLastUpdate(Date.now());
@@ -65,6 +71,7 @@ function App() {
     if (null === editData) {
       return;
     }
+    setListDisabled(true);
     axios.put('http://localhost:3003/list/' + editData.id, editData)
       .then(res => {
         setLastUpdate(Date.now());
@@ -93,7 +100,8 @@ function App() {
       setEditData,
       messages,
       msg,
-      createDisabled
+      createDisabled,
+      listDisabled
     }}>
       <div className="container">
         <div className="row">
