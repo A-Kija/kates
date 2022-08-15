@@ -1,5 +1,6 @@
 import './bootstrap.css';
 import './App.scss';
+import axios from 'axios';
 import Create from './Components/Create';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -25,7 +26,8 @@ function App() {
 
 
   useEffect(() => {
-    setAnimals(read(localStorageKey));
+    axios.get('http://localhost:3003/list')
+    .then(res => setAnimals(res.data));
   }, [lastUpdate])
 
   useEffect(() => {
