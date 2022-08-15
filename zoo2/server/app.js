@@ -14,13 +14,58 @@ const con = mysql.createConnection({
 });
 
 
+// app.get('/list', (req, res) => {
+//     const sql = `
+//     SELECT
+//     id, animal AS type, weight
+//     FROM animals
+//     ORDER BY animal
+//   `;
+//     con.query(sql, (err, result) => {
+//         if (err) throw err;
+//         res.send(result);
+//     });
+// });
+
 app.get('/list', (req, res) => {
-    const sql = `
-    SELECT
-    id, animal AS type, weight
-    FROM animals
-    ORDER BY animal
-  `;
+
+    let sql;
+
+    if (!req.query.sort) {
+        sql = `
+        SELECT
+        id, animal AS type, weight
+        FROM animals
+      `;
+    } else if (req.query.sort == 'az') {
+        sql = `
+        SELECT
+        id, animal AS type, weight
+        FROM animals
+        ORDER BY animal
+      `;
+    } else if (req.query.sort == 'za') {
+        sql = `
+        SELECT
+        id, animal AS type, weight
+        FROM animals
+        ORDER BY animal DESC
+      `;
+    } else if (req.query.sort == '09') {
+        sql = `
+        SELECT
+        id, animal AS type, weight
+        FROM animals
+        ORDER BY weight
+      `;
+    } else if (req.query.sort == '90') {
+        sql = `
+        SELECT
+        id, animal AS type, weight
+        FROM animals
+        ORDER BY weight DESC
+      `;
+    }
     con.query(sql, (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -34,7 +79,7 @@ app.delete('/list/:animalId', (req, res) => {
   `;
     con.query(sql, [req.params.animalId], (err, result) => {
         if (err) throw err;
-        res.send({msg: ['info', 'Animal was deleted from the list.']});
+        res.send({ msg: ['info', 'Animal was deleted from the list.'] });
     });
 });
 
@@ -46,7 +91,7 @@ app.post('/list/', (req, res) => {
   `;
     con.query(sql, [req.body.type, req.body.weight], (err, result) => {
         if (err) throw err;
-        res.send({msg: ['success', 'New animal was added to the list.']});
+        res.send({ msg: ['success', 'New animal was added to the list.'] });
     });
 });
 
@@ -58,7 +103,7 @@ app.put('/list/:animalId', (req, res) => {
   `;
     con.query(sql, [req.body.type, req.body.weight, req.params.animalId], (err, result) => {
         if (err) throw err;
-        res.send({msg: ['success', 'Animal was edited.']});
+        res.send({ msg: ['success', 'Animal was edited.'] });
     });
 });
 

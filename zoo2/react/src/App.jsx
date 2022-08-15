@@ -28,15 +28,18 @@ function App() {
   const [createDisabled, setCreateDisabled] = useState(false);
   const [listDisabled, setListDisabled] = useState(false);
 
+  // Sorts
+  const [sort, setSort] = useState(null);
+
   // READ
   useEffect(() => {
     setListDisabled(true);
-    axios.get('http://localhost:3003/list')
+    axios.get(sort ? ('http://localhost:3003/list/?sort=' + sort) : 'http://localhost:3003/list')
       .then(res => {
         setAnimals(res.data);
         setListDisabled(false);
       });
-  }, [lastUpdate]);
+  }, [lastUpdate, sort]);
 
   // CREATE
   useEffect(() => {
@@ -101,7 +104,8 @@ function App() {
       messages,
       msg,
       createDisabled,
-      listDisabled
+      listDisabled,
+      setSort
     }}>
       <div className="container">
         <div className="row">

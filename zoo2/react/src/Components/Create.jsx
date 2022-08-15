@@ -5,7 +5,7 @@ function Create() {
 
     const [type, setType] = useState('');
     const [weight, setWeight] = useState('');
-    const { setCreateData, msg, createDisabled } = useContext(DataContext);
+    const { setCreateData, msg, createDisabled, setSort } = useContext(DataContext);
     const btn = useRef();
 
     const clickAdd = () => {
@@ -23,6 +23,7 @@ function Create() {
             return;
         }
         setCreateData({type, weight});
+        setSort(null);
         setType('');
         setWeight('');
         btn.current.blur();

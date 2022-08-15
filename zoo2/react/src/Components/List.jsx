@@ -4,13 +4,17 @@ import Line from "./Line";
 
 function List() {
 
-    const { animals, listDisabled } = useContext(DataContext);
+    const { animals, listDisabled, setSort } = useContext(DataContext);
 
 
     return (
         <div className="card m-2">
             <div className="card-header">
                 <h2>List</h2>
+                <button type="button" onClick={() => setSort('az')} className="btn btn-outline-secondary">Name AZ</button>
+                <button type="button" onClick={() => setSort('za')} className="btn btn-outline-secondary">Name ZA</button>
+                <button type="button" onClick={() => setSort('09')} className="btn btn-outline-secondary">Weight min/max</button>
+                <button type="button" onClick={() => setSort('90')} className="btn btn-outline-secondary">Weight max/min</button>
             </div>
             <div className="card-body">
                 <ul className="list-group">

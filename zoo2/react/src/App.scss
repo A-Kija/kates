@@ -40,6 +40,17 @@ body {
     z-index: 1055;
 }
 
+.card-header {
+    display: flex;
+    align-items: center;
+    button {
+        margin-left: 11px;
+    }
+    h2 {
+        margin: 0;
+    }
+}
+
 .card-body {
     position: relative;
     .loader-screen {
