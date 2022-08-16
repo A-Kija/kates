@@ -27,4 +27,4 @@ useEffect(() => {
 
 }
 
-export default Brand
+export default Brand;
