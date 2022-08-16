@@ -8,6 +8,7 @@ import DataContext from './Components/022/DataContext';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import Brand from './Components/022/Brand';
 
 const animalsData = {
     fox: {color: 'brown', tail: 'Long', type: 'Fox'},
@@ -39,11 +40,12 @@ function App() {
     useEffect(() => {
         axios.get('https://in3.dev/vinted/api/brands/all')
         .then(res => setBrands(res.data));
-    })
+    }, []);
 
     return (
         <DataContext.Provider value={{
-            seaPlaners
+            seaPlaners,
+            brands
         }}>
         <BrowserRouter>
         <div className="App">
@@ -74,6 +76,7 @@ function App() {
                         <Route path="/animals/fast-rabbit" element={<Animals show={animalsData.rabbit} />}></Route>
                         <Route path="/plants" element={<Plants/>}></Route>
                         <Route path="/sea/:seaId" element={<Sea/>}></Route>
+                        <Route path="/brand/:id" element={<Brand/>}></Route>
                     </Routes>
                 </div>
             </header>
