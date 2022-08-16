@@ -5,6 +5,9 @@ import Animals from './Components/022/Animals';
 import Plants from './Components/022/Plants';
 import Sea from './Components/022/Sea';
 import DataContext from './Components/022/DataContext';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const animalsData = {
     fox: {color: 'brown', tail: 'Long', type: 'Fox'},
@@ -31,6 +34,13 @@ const seaPlaners = [
 
 function App() {
 
+    const [brands, setBrands] = useState(null);
+
+    useEffect(() => {
+        axios.get('https://in3.dev/vinted/api/brands/all')
+        .then(res => setBrands(res.data));
+    })
+
     return (
         <DataContext.Provider value={{
             seaPlaners
@@ -49,6 +59,11 @@ function App() {
                 <div className="container">
                     {
                        seaPlaners.map(s => <Link to={'/sea/' + s.id} key={s.id}>{s.name}</Link>) 
+                    }
+                </div>
+                <div className="container">
+                    {
+                        brands?.map(b => <Link key={b.id} to={'/brand/' + b.id}>{b.title}</Link>)
                     }
                 </div>
                 <div className="container">
