@@ -35,36 +35,64 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-
+.game-frame {
+  position: relative;
+  max-width: 1300px;
+  min-width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 50px;
+}
 
 .eggs-bin {
   position: relative;
   width: 480px;
   height: 60px;
-  border-bottom: 4px solid brown;
-  display: flex;
-  margin: 50px;
-  &.left {
-    flex-direction: row;
+  &.top {
+    margin-bottom: 100px;
   }
-  &.right {
-    flex-direction:row-reverse;
+  &.bottom {
+    margin-top: 100px;
   }
-  .egg {
-    width: 36px;
-    height: 56px;
-    margin: 4px;
-    border-radius: 50%;
-    background-color: antiquewhite;
-  }
-  .no-egg {
-    width: 36px;
-    height: 56px;
-    margin: 4px;
+  .path {
+    
+    display: flex;
+    &::after {
+      content: '';
+      display: block;
+      border-bottom: 4px solid brown;
+      width: 430px;
+      position: absolute;
+      top: 60px;
+    }
+
+    &.left {
+      flex-direction: row;
+     }
+
+    &.right {
+      flex-direction: row-reverse;
+    }
+
+    .egg {
+      width: 36px;
+      height: 56px;
+      margin: 4px;
+      border-radius: 50%;
+      background-color: antiquewhite;
+    }
+
+    .no-egg {
+      width: 36px;
+      height: 56px;
+      margin: 4px;
+    }
   }
 }

@@ -9,6 +9,15 @@ function EggsHolder({side}) {
     const { play } = useContext(Data);
     const timer = useRef(null);
 
+    useEffect(() => {
+        return () => {
+            if (null !== timer.current) {
+                clearInterval(timer.current)
+                timer.current = null;
+            }
+        }
+    }, []);
+
 
     useEffect(() => {
         if (false === play) {
@@ -31,11 +40,13 @@ function EggsHolder({side}) {
 
     return (
         <div className={'eggs-bin ' + side}>
+            <div className={'path ' + side}>
             {
                 eggs.map((e, i) => e ? 
                 <div className="egg" key={i}></div> :
                 <div className="no-egg" key={i}></div>)
             }
+            </div>
         </div>
     )
 }

@@ -13,9 +13,12 @@ function App() {
       play
     }}>
     <div className="App">
-    <EggsHolder side="left" />
-    <EggsHolder side="right" />
-
+    <div className="game-frame">
+    <EggsHolder side="left top" />
+    <EggsHolder side="right top" />
+    <EggsHolder side="left bottom" />
+    <EggsHolder side="right bottom" />
+    </div>
 
     <button onClick={() => setPlay(p => !p)}>Play/Stop</button>
     </div>
