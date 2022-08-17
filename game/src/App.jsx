@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
+import Catcher from './Components/Catcher';
 import Data from './Components/Data';
 import EggsHolder from './Components/EggsHolder';
 
@@ -18,6 +19,7 @@ function App() {
     <EggsHolder side="right top" />
     <EggsHolder side="left bottom" />
     <EggsHolder side="right bottom" />
+    <Catcher/>
     </div>
 
     <button onClick={() => setPlay(p => !p)}>Play/Stop</button>
