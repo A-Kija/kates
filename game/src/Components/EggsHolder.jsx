@@ -1,27 +1,41 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import Data from './Data';
+import rand from '../Functions/rand';
 
-function EggsHolder() {
+
+function EggsHolder({side}) {
 
     const [eggs, setEggs] = useState([...Array(12)].map(() => false));
-    const { play } = useContext(Data)
+    const { play } = useContext(Data);
+    const timer = useRef(null);
 
 
     useEffect(() => {
         if (false === play) {
-            return;
+            if (null !== timer.current) {
+                clearInterval(timer.current)
+                timer.current = null;
+            }
+        } else {
+            timer.current = setInterval(() => {
+                setEggs(e => {
+                    const eggs = [...e];
+                    eggs.pop();
+                    eggs.unshift(!rand(0, 6));
+                    return eggs;
+                })
+            }, 1000)
         }
-        const timer = setInterval(() => {
-            
-
-        }, 1000)
-
     }, [play])
 
 
     return (
-        <div>
-
+        <div className={'eggs-bin ' + side}>
+            {
+                eggs.map((e, i) => e ? 
+                <div className="egg" key={i}></div> :
+                <div className="no-egg" key={i}></div>)
+            }
         </div>
     )
 }
