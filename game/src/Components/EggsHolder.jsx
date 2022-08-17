@@ -6,10 +6,12 @@ import rand from '../Functions/rand';
 function EggsHolder({side, number}) {
 
     const [eggs, setEggs] = useState([...Array(12)].map(() => false));
-    const { play, manageEggs } = useContext(Data);
+    const { play, setReadyEggs, setResult, pos } = useContext(Data);
     const timer = useRef(null);
+    const holdNumber = useRef(number);
 
     useEffect(() => {
+
         return () => {
             if (null !== timer.current) {
                 clearInterval(timer.current)
@@ -20,30 +22,38 @@ function EggsHolder({side, number}) {
 
 
     useEffect(() => {
+        
         if (false === play) {
             if (null !== timer.current) {
                 clearInterval(timer.current)
                 timer.current = null;
             }
-        } else {
+        } else if(null === timer.current) {
             timer.current = setInterval(() => {
                 setEggs(e => {
                     let egg;
                     const eggs = [...e];
                     egg = eggs.pop();
                     if (egg) {
-                        manageEggs('fall', number);
+                        setReadyEggs(eg => eg.filter(e => e !== holdNumber.current));
+                        setResult(r => ({...r, missed: r.missed + 1}));
                     }
                     eggs.unshift(!rand(0, 6));
                     egg = eggs[eggs.length - 1];
                     if (egg) {
-                        manageEggs('ready', number);
+                        console.log(pos)
+                        if (pos === holdNumber.current) {
+                            setResult(r => ({...r, catched: r.catched + 1}));
+                            eggs[eggs.length - 1] = false;
+                        } else {
+                            setReadyEggs(e => [...e, holdNumber.current]);
+                        }
                     }
                     return eggs;
                 })
             }, 1000)
         }
-    }, [play]);
+    }, [play, setReadyEggs, setResult, pos]);
 
 
     return (

@@ -1,27 +1,38 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useContext, useEffect } from "react";
+import Data from "./Data";
 
 function Catcher() {
 
-    const [pos, setPos] = useState(4);
+    const {pos, setPos, readyEggs, setReadyEggs, setResult} = useContext(Data);
 
     useEffect(() => {
+        let now = 0;
         window.addEventListener('keydown', e => {
             switch (e.key) {
                 case 'q':
-                    setPos(1);
+                    now = 1
                     break;
                 case 'w':
-                    setPos(2);
+                    now = 2
                     break;
                 case 'a':
-                    setPos(3);
+                    now = 3
                     break;
                 case 's':
-                    setPos(4);
+                    now = 4
                     break;
                 default:
+                    now = 0
             }
+            setPos(now);
+            if (-1 !== readyEggs.indexOf(now)) {
+                setResult(r => ({...r, catched: r.catched + 1}));
+                setReadyEggs(e => e.filter(eg => eg !== now));
+            }
+
+
+
+
         });
     })
 
