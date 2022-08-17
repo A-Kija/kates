@@ -3,10 +3,10 @@ import Data from './Data';
 import rand from '../Functions/rand';
 
 
-function EggsHolder({side}) {
+function EggsHolder({side, number}) {
 
     const [eggs, setEggs] = useState([...Array(12)].map(() => false));
-    const { play } = useContext(Data);
+    const { play, manageEggs } = useContext(Data);
     const timer = useRef(null);
 
     useEffect(() => {
@@ -28,14 +28,22 @@ function EggsHolder({side}) {
         } else {
             timer.current = setInterval(() => {
                 setEggs(e => {
+                    let egg;
                     const eggs = [...e];
-                    eggs.pop();
+                    egg = eggs.pop();
+                    if (egg) {
+                        manageEggs('fall', number);
+                    }
                     eggs.unshift(!rand(0, 6));
+                    egg = eggs[eggs.length - 1];
+                    if (egg) {
+                        manageEggs('ready', number);
+                    }
                     return eggs;
                 })
             }, 1000)
         }
-    }, [play])
+    }, [play]);
 
 
     return (

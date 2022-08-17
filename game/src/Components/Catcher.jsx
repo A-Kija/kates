@@ -5,7 +5,6 @@ function Catcher() {
 
     const [pos, setPos] = useState(4);
 
-
     useEffect(() => {
         window.addEventListener('keydown', e => {
             switch (e.key) {
