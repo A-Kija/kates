@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import Brand from './Components/022/Brand';
+import { useCallback } from 'react';
 
 const animalsData = {
     fox: {color: 'brown', tail: 'Long', type: 'Fox'},
@@ -36,6 +37,20 @@ const seaPlaners = [
 function App() {
 
     const [brands, setBrands] = useState(null);
+
+
+    // const simple1 = () => {
+    //     console.log('Im simple.');
+    // }
+
+    const simple = useCallback(() => {
+        console.log('Im simple.');
+    }, []);
+
+    useEffect(() => {
+        simple();
+    }, [simple]);
+
 
     useEffect(() => {
         axios.get('https://in3.dev/vinted/api/brands/all')
