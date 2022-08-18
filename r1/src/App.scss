@@ -781,3 +781,60 @@ ul {
         line-height: 24px;
     }
 }
+
+.field {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .side {
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 300px;
+        flex-wrap: wrap;
+        &.left {
+            border-right: 1px solid crimson;
+        }
+        &.right {
+            border-left: 1px solid crimson;
+        }
+        .nice {
+            width: 100px;
+            height: 100px;
+            background-color: #61dafb69;
+            transition: all .5s;
+            border: 5px dotted #61dafb;
+            animation: nice-square-spin infinite 20s linear;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px;
+
+            span {
+                color: deeppink;
+                animation: nice-square-spin-back infinite 20s linear;
+                font-size: 36px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+@keyframes nice-square-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes nice-square-spin-back {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
