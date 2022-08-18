@@ -7,6 +7,7 @@ function Result() {
 
     return (
         <div className="result">
+            <span>Valdymas: Q, W, A, S</span>
             <h2>Missed: {result.missed}</h2>
             <h2>Catched: {result.catched}</h2>
         </div>

@@ -3,7 +3,7 @@ import Data from "./Data";
 
 function Catcher() {
 
-    const {pos, setPos, readyEggs, setReadyEggs, setResult} = useContext(Data);
+    const { pos, setPos } = useContext(Data);
 
     useEffect(() => {
         let now = 0;
@@ -22,17 +22,9 @@ function Catcher() {
                     now = 4
                     break;
                 default:
-                    now = 0
+                    return;
             }
             setPos(now);
-            if (-1 !== readyEggs.indexOf(now)) {
-                setResult(r => ({...r, catched: r.catched + 1}));
-                setReadyEggs(e => e.filter(eg => eg !== now));
-            }
-
-
-
-
         });
     })
 
@@ -43,7 +35,7 @@ function Catcher() {
             <div className="bin bottom left" style={{ visibility: pos === 3 ? 'visible' : 'hidden' }}></div>
             <div className="bin bottom right" style={{ visibility: pos === 4 ? 'visible' : 'hidden' }}></div>
         </div>
-    )
+    );
 
 }
 
