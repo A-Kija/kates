@@ -1,16 +1,11 @@
-function Circle({circle, setCircles, circles}) {
+function Circle({circle, setCircles}) {
 
 
     const move = () => {
         if (circle.side === 'left') {
-            // console.log(circles.map(cir => circle.id === cir.id ? {...cir, side: 'right'} : {...cir}))
-
-            const ci = circles.map(cir => circle.id === cir.id ? {...cir, side: 'right'} : {...cir});
-  
-
-            setCircles(ci);
+            setCircles(c => c.map(cir => circle.id === cir.id ? {...cir, side: 'right'} : {...cir}));
         } else {
-            setCircles(circles.map(cir => circle.id === cir.id ? {...cir, side: 'left'} : {...cir}));
+            setCircles(c => c.map(cir => circle.id === cir.id ? {...cir, side: 'left'} : {...cir}));
         }
     }
 
